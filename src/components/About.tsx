@@ -25,22 +25,7 @@ export const About: React.FC = () => {
   });
 
   return (
-    <section id="about" aria-label="About" className="relative bg-[#09090b] border-t border-white/[0.08] scroll-mt-20">
-      
-      {/* Background Rotating DevOps Continuous Infinity Loop Watermark (Exact Custom Symbol) */}
-      <div className="sticky top-0 h-0 overflow-visible pointer-events-none z-0">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 160, repeat: Infinity, ease: 'linear' }}
-          className="absolute -top-32 -right-[20%] w-[900px] h-[550px] flex items-center justify-center pointer-events-none select-none"
-        >
-          <img
-            src="/infinity-loop.png"
-            alt="Continuous Infinity Loop"
-            className="w-full h-full object-contain filter invert opacity-[0.035] select-none pointer-events-none"
-          />
-        </motion.div>
-      </div>
+    <section id="about" aria-label="About" className="relative border-t border-white/[0.08] scroll-mt-20">
 
       {/* 220vh Scroll-Track for Word-by-Word Scroll Reveal */}
       <div ref={containerRef} className="h-[220vh] relative w-full z-10">

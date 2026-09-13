@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
 import { Theme, Project } from './types';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -40,7 +41,22 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#09090b] text-zinc-100 flex flex-col font-sans selection:bg-amber-400 selection:text-zinc-950 overflow-x-clip">
+    <div className="min-h-screen bg-[#09090b] text-zinc-100 flex flex-col font-sans selection:bg-amber-400 selection:text-zinc-950 overflow-x-clip relative">
+      {/* Global Ambient DevOps Continuous Infinity Loop Background (Entire Website) */}
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden flex items-center justify-center select-none">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 180, repeat: Infinity, ease: 'linear' }}
+          className="w-[850px] sm:w-[1100px] lg:w-[1300px] h-[550px] sm:h-[700px] lg:h-[800px] flex items-center justify-center opacity-70"
+        >
+          <img
+            src="/infinity-loop.png"
+            alt="Continuous Infinity Loop Watermark"
+            className="w-full h-full object-contain filter invert opacity-[0.035] select-none pointer-events-none"
+          />
+        </motion.div>
+      </div>
+
       {/* Sticky Navigation */}
       <Navbar
         theme={theme}

@@ -85,7 +85,7 @@ export const About: React.FC = () => {
               </div>
 
               {/* Dynamic Word Light-Up */}
-              <h2 className="flex flex-wrap text-xl sm:text-2xl md:text-3xl lg:text-[1.85rem] xl:text-[2.1rem] leading-[1.32] lg:leading-[1.36] font-sans font-medium tracking-tight">
+              <h2 className="flex flex-wrap text-xl sm:text-2xl md:text-3xl lg:text-[1.85rem] xl:text-[2.1rem] leading-[1.38] lg:leading-[1.42] font-space font-medium tracking-tight">
                 {words.map((word, i) => {
                   const start = i / words.length;
                   const end = start + 1 / words.length;

@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useRef } from 'react';
 import { motion } from 'motion/react';
 import { ExternalLink, Github, ArrowUpRight, Sparkles, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react';
 import { PROJECTS } from '../data/portfolioData';
@@ -9,15 +9,7 @@ interface ProjectsProps {
 }
 
 export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-
-  const categories = ['All', 'Full Stack', 'Frontend', 'Backend / API'];
-
-  const filteredProjects = useMemo(() => {
-    if (selectedCategory === 'All') return PROJECTS;
-    return PROJECTS.filter((p) => p.category === selectedCategory);
-  }, [selectedCategory]);
 
   const handleScroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
@@ -36,7 +28,7 @@ export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
       className="py-24 px-6 sm:px-8 lg:px-12 max-w-7xl mx-auto border-t border-white/[0.08] scroll-mt-20"
     >
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-10">
+      <div className="flex items-end justify-between gap-6 mb-10">
         <div>
           <div className="flex items-center gap-2 font-mono text-[11px] tracking-widest uppercase text-amber-400 mb-3">
             <span className="w-6 h-[1px] bg-amber-400" />
@@ -45,51 +37,29 @@ export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
           <h2 className="text-4xl sm:text-6xl font-display font-extrabold tracking-tight text-zinc-100 flex items-baseline gap-3">
             Selected Work
             <sup className="text-xs font-mono text-zinc-500 font-normal">
-              [0{filteredProjects.length}]
+              [0{PROJECTS.length}]
             </sup>
           </h2>
         </div>
 
-        {/* Controls: Filter Pills & Scroll Buttons */}
-        <div className="flex items-center justify-between md:justify-end gap-4">
-          {/* Minimalist Filter Bar */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none font-mono text-xs tracking-widest uppercase">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                id={`project-filter-${cat.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
-                type="button"
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-full transition-all whitespace-nowrap ${
-                  selectedCategory === cat
-                    ? 'bg-zinc-100 text-zinc-950 font-bold shadow-md'
-                    : 'bg-zinc-900/80 text-zinc-400 hover:text-zinc-200 border border-white/5 hover:border-white/10'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-
-          {/* Navigation Arrows */}
-          <div className="hidden sm:flex items-center gap-2">
-            <button
-              type="button"
-              onClick={() => handleScroll('left')}
-              aria-label="Scroll projects left"
-              className="p-2.5 rounded-full bg-zinc-900 border border-white/10 text-zinc-300 hover:text-white hover:border-amber-400/50 transition-all hover:scale-105 active:scale-95"
-            >
-              <ChevronLeft className="w-4 h-4" />
-            </button>
-            <button
-              type="button"
-              onClick={() => handleScroll('right')}
-              aria-label="Scroll projects right"
-              className="p-2.5 rounded-full bg-zinc-900 border border-white/10 text-zinc-300 hover:text-white hover:border-amber-400/50 transition-all hover:scale-105 active:scale-95"
-            >
-              <ChevronRight className="w-4 h-4" />
-            </button>
-          </div>
+        {/* Controls: Horizontal Scroll Buttons */}
+        <div className="flex items-center gap-2.5">
+          <button
+            type="button"
+            onClick={() => handleScroll('left')}
+            aria-label="Scroll projects left"
+            className="p-2.5 sm:p-3 rounded-full bg-zinc-900 border border-white/10 text-zinc-300 hover:text-white hover:border-amber-400/50 transition-all hover:scale-105 active:scale-95 shadow-md"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+          <button
+            type="button"
+            onClick={() => handleScroll('right')}
+            aria-label="Scroll projects right"
+            className="p-2.5 sm:p-3 rounded-full bg-zinc-900 border border-white/10 text-zinc-300 hover:text-white hover:border-amber-400/50 transition-all hover:scale-105 active:scale-95 shadow-md"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
         </div>
       </div>
 
@@ -104,7 +74,7 @@ export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
           id="projects-horizontal-scroll-track"
           className="flex items-stretch gap-6 sm:gap-8 overflow-x-auto pb-8 pt-2 snap-x snap-mandatory scrollbar-thin scrollbar-thumb-zinc-800 scrollbar-track-transparent scroll-smooth px-1"
         >
-          {filteredProjects.map((project, index) => (
+          {PROJECTS.map((project) => (
             <motion.article
               key={project.id}
               whileHover={{ y: -6 }}

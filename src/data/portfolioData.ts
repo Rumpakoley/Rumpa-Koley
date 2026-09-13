@@ -141,7 +141,7 @@ export const PROJECTS: Project[] = [
     title: 'TaskOrbit — Agile Sprint & Kanban Platform',
     shortDescription:
       'Intuitive project tracking board with smooth drag-and-drop column workflows, checklist progress meters, and audit activity logs.',
-    category: 'Frontend',
+    category: 'Full Stack',
     technologies: ['React', 'TypeScript', 'Motion', 'Tailwind CSS', 'Local State Engine'],
     thumbnailUrl: 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?auto=format&fit=crop&w=1200&q=80',
     liveDemoUrl: 'https://taskorbit.example.com',
@@ -180,7 +180,7 @@ export const PROJECTS: Project[] = [
     title: 'DocuSynth — Technical Documentation Knowledge Base',
     shortDescription:
       'Minimalist technical knowledge base with live markdown parsing, deep text search, table-of-contents generation, and code highlighting.',
-    category: 'Backend / API',
+    category: 'Full Stack',
     technologies: ['TypeScript', 'Node.js', 'Express', 'Markdown AST', 'Tailwind CSS'],
     thumbnailUrl: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80',
     liveDemoUrl: 'https://docusynth.example.com',

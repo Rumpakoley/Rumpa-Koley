@@ -38,9 +38,9 @@ export const About: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* 240vh Scroll-Track for Word-by-Word Scroll Reveal */}
-      <div ref={containerRef} className="h-[240vh] relative w-full z-10">
-        <div className="sticky top-0 h-screen flex flex-col justify-center px-6 sm:px-10 lg:px-16 max-w-7xl mx-auto overflow-hidden">
+      {/* 220vh Scroll-Track for Word-by-Word Scroll Reveal */}
+      <div ref={containerRef} className="h-[220vh] relative w-full z-10">
+        <div className="sticky top-0 h-screen flex flex-col justify-center pt-24 sm:pt-28 md:pt-32 pb-10 px-6 sm:px-10 lg:px-16 max-w-7xl mx-auto">
           
           {/* Top subtle progress bar */}
           <motion.div
@@ -48,7 +48,7 @@ export const About: React.FC = () => {
             style={{ scaleX: scrollYProgress }}
           />
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center w-full relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 xl:gap-16 items-center w-full relative">
             
             {/* Left Column: Portrait Card */}
             <motion.div
@@ -56,7 +56,7 @@ export const About: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="hidden lg:block lg:col-span-4 aspect-[4/5] max-h-[460px] rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 shadow-2xl relative group"
+              className="hidden lg:block lg:col-span-4 aspect-[4/5] max-h-[340px] xl:max-h-[380px] rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 shadow-2xl relative group"
             >
               <img
                 src={PERSONAL_INFO.avatarUrl}
@@ -72,11 +72,11 @@ export const About: React.FC = () => {
             <div className="lg:col-span-8 flex flex-col justify-center relative">
               
               {/* Phone / Mobile Standalone Portrait Card */}
-              <div className="lg:hidden flex flex-col items-start gap-3 mb-5">
+              <div className="lg:hidden flex flex-col items-start gap-2.5 mb-4">
                 <span className="font-mono text-[10px] tracking-widest uppercase text-zinc-500">
                   About
                 </span>
-                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden relative bg-zinc-900 border border-white/15 shadow-xl shrink-0">
+                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden relative bg-zinc-900 border border-white/15 shadow-xl shrink-0">
                   <img
                     src={PERSONAL_INFO.avatarUrl}
                     alt={PERSONAL_INFO.name}
@@ -88,7 +88,7 @@ export const About: React.FC = () => {
               </div>
 
               {/* Dynamic Word Light-Up with Full Bio Illumination */}
-              <h3 className="flex flex-wrap text-xl sm:text-2xl md:text-3xl lg:text-[2rem] xl:text-[2.4rem] leading-[1.32] lg:leading-[1.36] font-space font-medium tracking-tight text-white">
+              <h3 className="flex flex-wrap text-base sm:text-xl md:text-2xl lg:text-[1.55rem] xl:text-[1.78rem] 2xl:text-[1.95rem] leading-[1.36] sm:leading-[1.4] lg:leading-[1.42] font-space font-medium tracking-tight text-white">
                 {words.map((word, i) => (
                   <motion.span
                     key={i}
@@ -108,7 +108,7 @@ export const About: React.FC = () => {
               <motion.div
                 animate={{ opacity: activeWordIndex >= words.length ? 0 : 0.6 }}
                 transition={{ duration: 0.4 }}
-                className="flex items-center gap-2 mt-6 font-mono text-[10px] tracking-widest uppercase text-zinc-400"
+                className="flex items-center gap-2 mt-5 font-mono text-[10px] tracking-widest uppercase text-zinc-400"
               >
                 <motion.span
                   animate={{ y: [0, 5, 0] }}

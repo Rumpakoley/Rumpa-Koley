@@ -26,9 +26,9 @@ const Word: React.FC<WordProps> = ({ word, range, progress }) => {
 export const About: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Exact statement modeled after Mrinmoy's cinematic structure
+  // Restored original manifesto bio
   const manifestoText =
-    "Rumpa is an India-based full-stack developer, software engineer, and systems architect. Specializing in TypeScript, modern React architectures, and distributed backend services, she brings a clean, high-performance visual signature to her applications. Driven by the belief that clean code and systematic design can empower millions, she handles both frontend fidelity and database scalability, constantly refining her craft with every new system she builds.";
+    "Rumpa is a full-stack developer and software engineer with a deep passion for building resilient, high-performance web systems. Specializing in TypeScript, modern React architectures, and distributed backend services, she brings an architectural precision and user-first visual signature to every application. Driven by clean code and systematic design, she handles both frontend fidelity and database scalability, constantly engineering digital experiences that humans can trust and love using.";
 
   const words = manifestoText.split(' ');
 

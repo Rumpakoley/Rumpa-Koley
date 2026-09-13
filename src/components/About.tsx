@@ -29,7 +29,7 @@ export const About: React.FC = () => {
 
       {/* 220vh Scroll-Track for Word-by-Word Scroll Reveal */}
       <div ref={containerRef} className="h-[220vh] relative w-full z-10">
-        <div className="sticky top-0 h-screen flex flex-col justify-center py-10 sm:py-12 md:py-14 px-6 sm:px-10 lg:px-16 max-w-7xl mx-auto">
+        <div className="sticky top-0 h-screen flex flex-col justify-start lg:justify-center pt-20 pb-6 sm:pt-24 sm:pb-8 lg:py-12 px-6 sm:px-10 lg:px-16 max-w-7xl mx-auto overflow-hidden">
           
           {/* Top subtle progress bar */}
           <motion.div
@@ -61,11 +61,11 @@ export const About: React.FC = () => {
             <div className="lg:col-span-8 flex flex-col justify-center relative">
               
               {/* Phone / Mobile Standalone Portrait Card */}
-              <div className="lg:hidden flex flex-col items-start gap-2.5 mb-4">
+              <div className="lg:hidden flex flex-col items-start gap-2 mb-3.5">
                 <span className="font-mono text-[10px] tracking-widest uppercase text-zinc-500">
                   About
                 </span>
-                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden relative bg-zinc-900 border border-white/15 shadow-xl shrink-0">
+                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-3xl overflow-hidden relative bg-zinc-900 border border-white/15 shadow-2xl shrink-0">
                   <img
                     src={PERSONAL_INFO.avatarUrl}
                     alt={PERSONAL_INFO.name}
@@ -77,7 +77,7 @@ export const About: React.FC = () => {
               </div>
 
               {/* Dynamic Word Light-Up with Full Bio Illumination */}
-              <h3 className="flex flex-wrap text-base sm:text-xl md:text-2xl lg:text-[1.55rem] xl:text-[1.78rem] 2xl:text-[1.95rem] leading-[1.36] sm:leading-[1.4] lg:leading-[1.42] font-space font-medium tracking-tight text-white">
+              <h3 className="flex flex-wrap text-[1.05rem] sm:text-xl md:text-2xl lg:text-[1.55rem] xl:text-[1.78rem] 2xl:text-[1.95rem] leading-[1.38] sm:leading-[1.4] lg:leading-[1.42] font-space font-medium tracking-tight text-white">
                 {words.map((word, i) => (
                   <motion.span
                     key={i}
@@ -97,7 +97,7 @@ export const About: React.FC = () => {
               <motion.div
                 animate={{ opacity: activeWordIndex >= words.length ? 0 : 0.6 }}
                 transition={{ duration: 0.4 }}
-                className="flex items-center gap-2 mt-5 font-mono text-[10px] tracking-widest uppercase text-zinc-400"
+                className="flex items-center gap-2 mt-4 font-mono text-[10px] tracking-widest uppercase text-zinc-400"
               >
                 <motion.span
                   animate={{ y: [0, 5, 0] }}

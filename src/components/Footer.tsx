@@ -58,36 +58,46 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResumeModal }) => {
 
       </div>
 
-      {/* Giant Bottom Watermark Statement with Interactive Character Hover Effects */}
-      <div className="pt-16 flex flex-col md:flex-row justify-between items-end gap-6 relative select-none group/footer">
+      {/* Giant Bottom Watermark Statement with Interactive Character Hover & Click Effects */}
+      <div className="pt-16 flex flex-col md:flex-row justify-between items-end gap-6 relative select-none group/footer overflow-visible">
         
         {/* Subtle Ambient Hover Glow */}
-        <div className="absolute -bottom-10 left-0 w-[400px] h-[200px] bg-amber-500/[0.03] group-hover/footer:bg-amber-500/[0.08] rounded-full blur-[100px] pointer-events-none transition-all duration-700 -z-10" />
+        <div className="absolute -bottom-10 left-1/4 -translate-x-1/2 w-[550px] h-[250px] bg-amber-500/[0.04] group-hover/footer:bg-amber-500/[0.12] rounded-full blur-[110px] pointer-events-none transition-all duration-700 -z-10" />
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-center text-[17vw] sm:text-[14vw] lg:text-[11.5vw] leading-[0.78] font-display font-black tracking-tighter uppercase origin-bottom-left"
-        >
-          {['R', 'U', 'M', 'P', 'A'].map((letter, index) => (
-            <motion.span
-              key={index}
-              whileHover={{
-                y: -10,
-                scale: 1.06,
-                transition: { duration: 0.25, ease: 'easeOut' },
-              }}
-              className="watermark-letter font-black select-none transition-all duration-300 inline-block"
-            >
-              {letter}
-            </motion.span>
-          ))}
-        </motion.div>
+        <div className="relative">
+          {/* Watermark Tagline */}
+          <div className="flex items-center gap-2 font-mono text-[10px] tracking-widest uppercase text-zinc-500 mb-2 group-hover/footer:text-amber-400 transition-colors">
+            <span className="w-2 h-2 rounded-full bg-amber-400/80 animate-pulse" />
+            <span>Digital Architect & Full Stack Engineer</span>
+          </div>
 
-        <div className="font-mono text-[10px] tracking-widest uppercase text-zinc-400 space-y-1 text-right shrink-0 pb-2">
-          <p className="hover:text-amber-400 transition-colors">© {new Date().getFullYear()} Rumpa Koley</p>
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="flex items-center text-[17vw] sm:text-[14vw] lg:text-[11.5vw] leading-[0.78] font-display font-black tracking-tighter uppercase origin-bottom-left"
+          >
+            {['R', 'U', 'M', 'P', 'A'].map((letter, index) => (
+              <motion.span
+                key={index}
+                whileHover={{
+                  y: -14,
+                  scale: 1.08,
+                  rotate: index % 2 === 0 ? -1.5 : 1.5,
+                  transition: { type: 'spring', stiffness: 350, damping: 15 },
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="watermark-letter font-black select-none inline-block px-[0.02em]"
+              >
+                {letter}
+              </motion.span>
+            ))}
+          </motion.div>
+        </div>
+
+        <div className="font-mono text-[10px] tracking-widest uppercase text-zinc-400 space-y-1.5 text-right shrink-0 pb-3">
+          <p className="hover:text-amber-400 transition-colors font-medium">© {new Date().getFullYear()} Rumpa Koley</p>
           <p className="text-zinc-500">Built with React 19, TypeScript & Tailwind CSS</p>
         </div>
       </div>

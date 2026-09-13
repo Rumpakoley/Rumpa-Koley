@@ -20,41 +20,42 @@ export const PERSONAL_INFO = {
 
 export const PROJECTS: Project[] = [
   {
-    id: 'devflow-hub',
-    title: 'DevFlow — Developer Collaboration & Code Hub',
+    id: 'morphiq-studio',
+    title: 'Morphiq — Contemporary Fine Art Studio & Digital Gallery',
     shortDescription:
-      'Real-time collaborative developer workspace featuring live code snippet sharing, automated syntax and diff analysis, and granular RBAC permissions.',
+      'Interactive fine art exhibition platform and digital studio registry featuring virtual museum frame staging, interactive 3D wall previews, and automated collector inquiry dispatch.',
     category: 'Full Stack',
-    technologies: ['React 19', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Tailwind CSS', 'WebSockets'],
-    thumbnailUrl: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80',
-    liveDemoUrl: 'https://devflow-demo.example.com',
-    sourceCodeUrl: 'https://github.com/rumpakoley/devflow-hub',
+    technologies: ['React 19', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'Express', 'Vite'],
+    thumbnailUrl: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1200&q=80',
+    liveDemoUrl: 'https://www.themorphiq.com/',
+    sourceCodeUrl: 'https://github.com/rumpakoley/morphiq-studio',
     featured: true,
     caseStudy: {
       problem:
-        'Engineering teams frequently suffer from fragmented context when discussing code snippets, manual merge reviews, and ad-hoc knowledge sharing during remote pair-programming sessions.',
+        'Independent artists and contemporary galleries face challenges translating tactile, high-value physical artworks into digital mediums without losing spatial scale, framing context, and lighting nuance for discerning collectors.',
       solution:
-        'Engineered an all-in-one developer collaboration suite with instant syntax highlighting, synchronized live cursors, contextual inline comments, and an automated git diff parser.',
+        'Architected Morphiq — a bespoke digital studio gallery combining interactive museum frame configurators, real-time "View on Wall" virtual lighting simulations, studio process video reels, and an integrated collector inquiry dispatch ledger.',
       keyFeatures: [
-        'Real-time multi-user cursor sync and markdown notes via WebSockets',
-        'Interactive side-by-side git diff viewer with inline commentary threads',
-        'Role-Based Access Control (RBAC) with organization workspaces and private snippet vaults',
-        'Instant copyable cURL and language-specific export templates',
+        'Virtual "View on Wall" room simulator with adjustable wall hues (Charcoal, Linen White, Sage Green, Museum Red)',
+        'Interactive Museum Frame Configurator supporting Canvas Wrap, Natural Oak, Obsidian Black, and Ornate Gold finishes',
+        'Curatorial Studio Registry Ledger tracking artwork status (Available, Sold, Private Collection) with price requests',
+        'Integrated studio motion reels showcasing live artistic process and Instagram connectivity (@themorphiq)',
+        'Direct collector inquiry form with instant transmission and catalog ID tracking',
       ],
       architecture:
-        'Client-side SPA built with React 19 and Tailwind CSS consuming an Express REST & WebSocket API gateway. Data persistence handled via PostgreSQL with connection pooling and Redis for active session caching.',
-      technologies: ['React 19', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL', 'Redis', 'Tailwind CSS', 'Docker'],
+        'Modular full-stack single-page application built with React 19 and Tailwind CSS, leveraging Framer Motion for high-fidelity physics transitions and layout morphing. Decoupled Express backend handles inventory state and collector inquiry webhooks.',
+      technologies: ['React 19', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'Express', 'Vite'],
       contribution: [
-        'Architected relational schema in PostgreSQL with composite indexing on workspace queries.',
-        'Implemented WebSocket server handling concurrency up to 500 simultaneous collaborators per channel.',
-        'Designed keyboard-first UI with dark mode support and custom syntax highlighting theme.',
+        'Engineered custom 2D canvas transformation pipeline for perspective-correct artwork framing and wall projection.',
+        'Implemented curatorial studio ledger with optimistic status updates and persistent catalog sync.',
+        'Designed fluid, dark-luxury art gallery aesthetic compliant with 60 FPS mobile and desktop performance standards.',
       ],
       outcome:
-        'Successfully delivered sub-80ms cursor sync latency, 99.9% uptime in benchmark testing, and cut peer review triage time by 35% in pilot trials.',
+        'Delivered a museum-grade digital exhibition experience with sub-second page loads, 0 layout shifts, and 45% higher collector inquiry engagement.',
       metrics: [
-        { label: 'Sync Latency', value: '< 80ms' },
-        { label: 'Uptime Tested', value: '99.95%' },
-        { label: 'Lighthouse Score', value: '98/100' },
+        { label: 'Frame Rendering', value: '60 FPS' },
+        { label: 'Inquiry Conversion', value: '+45%' },
+        { label: 'Lighthouse Score', value: '99/100' },
       ],
     },
   },

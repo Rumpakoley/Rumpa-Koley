@@ -10,11 +10,8 @@
     font-family: 'JetBrains Mono', monospace;
   }
   
-  /* Global smooth transitions for all typography, interactive elements, and links */
-  a, button, input, textarea, h1, h2, h3, h4, h5, h6, p, span, li {
-    transition-property: color, background-color, border-color, opacity, transform, filter, text-shadow;
-    transition-duration: 250ms;
-    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  a, button, input, textarea {
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   }
 }
 

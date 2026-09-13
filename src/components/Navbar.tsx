@@ -114,10 +114,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <span className="opacity-40 mr-1 text-[9px]">[{link.num}]</span>
                   {link.label}
                   {isActive && (
-                    <motion.span
-                      layoutId="activeNavIndicator"
-                      className="absolute -bottom-0.5 left-0 right-0 h-[1.5px] bg-amber-400 rounded-full"
-                    />
+                    <span className="absolute -bottom-0.5 left-0 right-0 h-[1.5px] bg-amber-400 rounded-full animate-in fade-in duration-200" />
                   )}
                 </a>
               );

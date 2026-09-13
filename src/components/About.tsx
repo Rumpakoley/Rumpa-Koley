@@ -38,9 +38,9 @@ export const About: React.FC = () => {
             style={{ scaleX: scrollYProgress }}
           />
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-14 items-center">
             
-            {/* Left Column: Visual Portrait / Identity Graphic */}
+            {/* Desktop Left Column: Visual Portrait Graphic */}
             <div
               className="hidden lg:block lg:col-span-4 rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 relative group shadow-2xl h-[380px]"
             >
@@ -54,9 +54,33 @@ export const About: React.FC = () => {
               />
             </div>
 
-            {/* Right Column: Scroll-Revealed Words */}
+            {/* Right Column: Mobile Portrait Header + Scroll-Revealed Words */}
             <div className="lg:col-span-8 flex flex-col justify-center">
-              <div className="font-mono text-[11px] tracking-widest uppercase text-amber-400 mb-5 flex items-center gap-2">
+              
+              {/* Phone / Mobile Portrait Header */}
+              <div className="flex items-center gap-3.5 mb-4 lg:hidden">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden border border-amber-400/40 shadow-lg shrink-0 bg-zinc-900">
+                  <img
+                    src={PERSONAL_INFO.avatarUrl}
+                    alt={PERSONAL_INFO.name}
+                    loading="eager"
+                    decoding="async"
+                    className="w-full h-full object-cover object-center"
+                  />
+                </div>
+                <div>
+                  <div className="font-mono text-[10px] tracking-widest uppercase text-amber-400 flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>Engineering Manifesto</span>
+                  </div>
+                  <h4 className="font-display font-bold text-base text-zinc-100">
+                    {PERSONAL_INFO.name}
+                  </h4>
+                </div>
+              </div>
+
+              {/* Desktop Section Tag */}
+              <div className="hidden lg:flex font-mono text-[11px] tracking-widest uppercase text-amber-400 mb-5 items-center gap-2">
                 <span className="w-6 h-[1px] bg-amber-400" />
                 <span>Engineering Manifesto</span>
               </div>

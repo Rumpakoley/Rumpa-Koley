@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'motion/react';
-import { Layers, Server, ShieldCheck, Infinity as InfinityIcon } from 'lucide-react';
+import { Layers, Server, ShieldCheck } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 export const About: React.FC = () => {
@@ -27,14 +27,18 @@ export const About: React.FC = () => {
   return (
     <section id="about" aria-label="About" className="relative bg-[#09090b] border-t border-white/[0.08] scroll-mt-20">
       
-      {/* Background Rotating Infinity Sign Watermark */}
+      {/* Background Rotating DevOps Continuous Infinity Loop Watermark (Exact Custom Symbol) */}
       <div className="sticky top-0 h-0 overflow-visible pointer-events-none z-0">
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 160, repeat: Infinity, ease: 'linear' }}
-          className="absolute -top-20 -right-[15%] text-white/[0.03]"
+          className="absolute -top-32 -right-[20%] w-[900px] h-[550px] flex items-center justify-center pointer-events-none select-none"
         >
-          <InfinityIcon size={840} strokeWidth={0.5} />
+          <img
+            src="/infinity-loop.png"
+            alt="Continuous Infinity Loop"
+            className="w-full h-full object-contain filter invert opacity-[0.035] select-none pointer-events-none"
+          />
         </motion.div>
       </div>
 

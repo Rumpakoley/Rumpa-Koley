@@ -82,6 +82,8 @@ export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
                 <img
                   src={project.thumbnailUrl}
                   alt={`${project.title} Preview`}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover object-center grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
                   referrerPolicy="no-referrer"
                 />

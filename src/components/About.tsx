@@ -19,8 +19,8 @@ export const About: React.FC = () => {
 
   useEffect(() => {
     const unsubscribe = scrollYProgress.on('change', (latest) => {
-      const idx = Math.floor(latest * words.length * 1.05);
-      setActiveWordIndex(idx);
+      const idx = Math.min(words.length, Math.floor(latest * words.length * 1.05));
+      setActiveWordIndex((prev) => (prev !== idx ? idx : prev));
     });
     return () => unsubscribe();
   }, [scrollYProgress, words.length]);
@@ -41,20 +41,18 @@ export const About: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
             
             {/* Left Column: Visual Portrait / Identity Graphic */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            <div
               className="hidden lg:block lg:col-span-4 rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 relative group shadow-2xl h-[380px]"
             >
               {/* Clean Portrait Image */}
               <img
                 src={PERSONAL_INFO.avatarUrl}
                 alt={PERSONAL_INFO.name}
+                loading="eager"
+                decoding="async"
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
               />
-            </motion.div>
+            </div>
 
             {/* Right Column: Scroll-Revealed Words */}
             <div className="lg:col-span-8 flex flex-col justify-center">
@@ -63,23 +61,19 @@ export const About: React.FC = () => {
                 <span>Engineering Manifesto</span>
               </div>
 
-              {/* Dynamic Word Light-Up */}
+              {/* Dynamic Word Light-Up with Pure CSS Hardware Acceleration */}
               <h3 className="flex flex-wrap text-xl sm:text-2xl md:text-3xl lg:text-[2.2rem] leading-[1.38] font-sans font-medium tracking-tight">
                 {words.map((word, idx) => {
                   const isLit = idx < activeWordIndex;
                   return (
-                    <motion.span
+                    <span
                       key={idx}
-                      animate={{
-                        opacity: isLit ? 1 : 0.14,
-                        y: isLit ? 0 : 2,
-                        color: isLit ? '#ffffff' : '#71717a',
-                      }}
-                      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                      className="mr-[0.3em] my-[0.1em] inline-block transition-all"
+                      className={`mr-[0.3em] my-[0.1em] inline-block transition-all duration-200 ${
+                        isLit ? 'text-white opacity-100 translate-y-0' : 'text-zinc-500 opacity-20 translate-y-0.5'
+                      }`}
                     >
                       {word}
-                    </motion.span>
+                    </span>
                   );
                 })}
               </h3>

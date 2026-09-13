@@ -24,26 +24,33 @@ export const Navbar: React.FC<NavbarProps> = ({
   ];
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          setIsScrolled((prev) => (prev !== scrollY > 30 ? scrollY > 30 : prev));
 
-      const sections = ['hero', 'projects', 'about', 'skills', 'experience', 'contact'];
-      const scrollPosition = window.scrollY + 180;
+          const sections = ['hero', 'about', 'skills', 'projects', 'experience', 'contact'];
+          const scrollPosition = scrollY + 220;
 
-      for (const section of sections) {
-        const el = document.getElementById(section);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(section);
-            break;
+          for (let i = sections.length - 1; i >= 0; i--) {
+            const section = sections[i];
+            const el = document.getElementById(section);
+            if (el && scrollPosition >= el.offsetTop) {
+              setActiveSection((prev) => (prev !== section ? section : prev));
+              break;
+            }
           }
-        }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 

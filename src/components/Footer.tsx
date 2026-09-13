@@ -58,15 +58,37 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResumeModal }) => {
 
       </div>
 
-      {/* Giant Bottom Watermark Statement (Mrinmoy Signature) */}
-      <div className="pt-12 flex flex-col md:flex-row justify-between items-end gap-6 relative select-none">
-        <h2 className="text-[17vw] sm:text-[14vw] lg:text-[11vw] leading-[0.78] font-display font-black tracking-tighter uppercase text-white/[0.04] pointer-events-none origin-bottom-left">
-          RUMPA
-        </h2>
+      {/* Giant Bottom Watermark Statement with Interactive Character Hover Effects */}
+      <div className="pt-16 flex flex-col md:flex-row justify-between items-end gap-6 relative select-none group/footer">
+        
+        {/* Subtle Ambient Hover Glow */}
+        <div className="absolute -bottom-10 left-0 w-[400px] h-[200px] bg-amber-500/[0.03] group-hover/footer:bg-amber-500/[0.08] rounded-full blur-[100px] pointer-events-none transition-all duration-700 -z-10" />
 
-        <div className="font-mono text-[10px] tracking-widest uppercase text-zinc-400 space-y-1 text-right shrink-0">
-          <p>© {new Date().getFullYear()} Rumpa Koley</p>
-          <p>Built with React 19, TypeScript & Tailwind CSS</p>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="flex items-center text-[17vw] sm:text-[14vw] lg:text-[11.5vw] leading-[0.78] font-display font-black tracking-tighter uppercase origin-bottom-left"
+        >
+          {['R', 'U', 'M', 'P', 'A'].map((letter, index) => (
+            <motion.span
+              key={index}
+              whileHover={{
+                y: -10,
+                scale: 1.06,
+                transition: { duration: 0.25, ease: 'easeOut' },
+              }}
+              className="watermark-letter font-black select-none transition-all duration-300 inline-block"
+            >
+              {letter}
+            </motion.span>
+          ))}
+        </motion.div>
+
+        <div className="font-mono text-[10px] tracking-widest uppercase text-zinc-400 space-y-1 text-right shrink-0 pb-2">
+          <p className="hover:text-amber-400 transition-colors">© {new Date().getFullYear()} Rumpa Koley</p>
+          <p className="text-zinc-500">Built with React 19, TypeScript & Tailwind CSS</p>
         </div>
       </div>
 

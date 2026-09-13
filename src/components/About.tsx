@@ -45,7 +45,7 @@ export const About: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="hidden lg:block lg:col-span-4 aspect-[4/5] max-h-[340px] xl:max-h-[380px] rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 shadow-2xl relative group"
+              className="hidden lg:block lg:col-span-5 aspect-[4/5] max-h-[420px] xl:max-h-[480px] rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 shadow-2xl relative group"
             >
               <img
                 src={PERSONAL_INFO.avatarUrl}
@@ -58,14 +58,14 @@ export const About: React.FC = () => {
             </motion.div>
 
             {/* Right Column: Scroll-Illuminated Words */}
-            <div className="lg:col-span-8 flex flex-col justify-center relative">
+            <div className="lg:col-span-7 flex flex-col justify-center relative">
               
               {/* Phone / Mobile Standalone Portrait Card */}
-              <div className="lg:hidden flex flex-col items-start gap-2 mb-3.5">
+              <div className="lg:hidden flex flex-col items-start gap-2.5 mb-4">
                 <span className="font-mono text-[10px] tracking-widest uppercase text-zinc-500">
                   About
                 </span>
-                <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-3xl overflow-hidden relative bg-zinc-900 border border-white/15 shadow-2xl shrink-0">
+                <div className="w-40 h-44 sm:w-48 sm:h-52 rounded-3xl overflow-hidden relative bg-zinc-900 border border-white/15 shadow-2xl shrink-0">
                   <img
                     src={PERSONAL_INFO.avatarUrl}
                     alt={PERSONAL_INFO.name}
@@ -77,7 +77,7 @@ export const About: React.FC = () => {
               </div>
 
               {/* Dynamic Word Light-Up with Full Bio Illumination */}
-              <h3 className="flex flex-wrap text-[1.32rem] sm:text-[1.5rem] md:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] 2xl:text-[2rem] leading-[1.32] sm:leading-[1.35] lg:leading-[1.4] font-space font-medium tracking-tight text-white">
+              <h3 className="flex flex-wrap text-[1.48rem] sm:text-[1.7rem] md:text-[1.85rem] lg:text-[1.8rem] xl:text-[2.05rem] 2xl:text-[2.25rem] leading-[1.32] sm:leading-[1.34] lg:leading-[1.38] font-space font-medium tracking-tight text-white">
                 {words.map((word, i) => (
                   <motion.span
                     key={i}

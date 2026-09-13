@@ -40,18 +40,18 @@ export const About: React.FC = () => {
   return (
     <section id="about" aria-label="About" className="relative bg-[#09090b] border-t border-white/[0.08] scroll-mt-20">
       
-      {/* 200vh Scroll-Track for Word-by-Word Scroll Reveal (Mrinmoy Signature) */}
-      <div ref={containerRef} className="h-[200vh] relative w-full">
-        <div className="sticky top-0 h-screen flex items-center justify-center pt-24 sm:pt-28 pb-8 px-6 sm:px-10 lg:px-16 max-w-7xl mx-auto overflow-hidden">
+      {/* 180vh Scroll-Track for Word-by-Word Scroll Reveal (Mrinmoy Signature) */}
+      <div ref={containerRef} className="h-[180vh] relative w-full">
+        <div className="sticky top-0 h-screen flex items-center justify-center pt-20 sm:pt-24 pb-8 px-5 sm:px-8 lg:px-14 max-w-7xl mx-auto">
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center w-full relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 xl:gap-14 items-center w-full relative">
             
             {/* Ambient Background Circular Watermark Accent */}
             <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[380px] h-[380px] border border-white/[0.03] rounded-full pointer-events-none -z-10" />
             <div className="absolute right-10 top-1/2 -translate-y-1/2 w-[240px] h-[240px] border border-white/[0.02] rounded-full pointer-events-none -z-10" />
 
             {/* Left Column: Portrait Card */}
-            <div className="hidden lg:block lg:col-span-5 h-[360px] xl:h-[420px] rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 shadow-2xl relative group max-w-[340px] xl:max-w-[380px]">
+            <div className="hidden lg:block lg:col-span-5 h-[320px] lg:h-[350px] xl:h-[390px] rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 shadow-2xl relative group max-w-[280px] lg:max-w-[310px] xl:max-w-[340px]">
               <img
                 src={PERSONAL_INFO.avatarUrl}
                 alt={PERSONAL_INFO.name}
@@ -66,11 +66,11 @@ export const About: React.FC = () => {
             <div className="lg:col-span-7 flex flex-col justify-center relative">
               
               {/* Phone / Mobile Standalone Portrait Card (Matching Reference) */}
-              <div className="lg:hidden mb-5 flex flex-col items-start">
-                <span className="font-mono text-[10px] sm:text-[11px] tracking-widest uppercase text-zinc-500 mb-2.5 block">
+              <div className="lg:hidden mb-3.5 flex flex-col items-start">
+                <span className="font-mono text-[10px] sm:text-[11px] tracking-widest uppercase text-zinc-500 mb-2 block">
                   About
                 </span>
-                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border border-white/15 shadow-xl bg-zinc-900">
+                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border border-white/15 shadow-xl bg-zinc-900">
                   <img
                     src={PERSONAL_INFO.avatarUrl}
                     alt={PERSONAL_INFO.name}
@@ -81,11 +81,12 @@ export const About: React.FC = () => {
                 </div>
               </div>
 
-              {/* Dynamic Word Light-Up */}
-              <h2 className="flex flex-wrap text-lg sm:text-2xl md:text-3xl lg:text-[1.85rem] xl:text-[2.1rem] leading-[1.32] sm:leading-[1.38] lg:leading-[1.42] font-space font-medium tracking-tight">
+              {/* Dynamic Word Light-Up with Full Illumination Completion */}
+              <h2 className="flex flex-wrap text-base sm:text-xl md:text-2xl lg:text-[1.55rem] xl:text-[1.75rem] 2xl:text-[1.92rem] leading-[1.35] sm:leading-[1.38] lg:leading-[1.4] font-space font-medium tracking-tight">
                 {words.map((word, i) => {
-                  const start = i / words.length;
-                  const end = start + 1 / words.length;
+                  const revealSpan = 0.72; // Full bio reaches 100% white illumination by 72% scroll
+                  const start = (i / words.length) * revealSpan;
+                  const end = Math.min(start + (1 / words.length) * revealSpan * 1.4, 0.78);
                   return (
                     <Word
                       key={i}
@@ -98,7 +99,7 @@ export const About: React.FC = () => {
               </h2>
 
               {/* Mobile Scroll Hint */}
-              <div className="lg:hidden flex items-center gap-1.5 font-mono text-[10px] tracking-widest uppercase text-zinc-500 mt-4">
+              <div className="lg:hidden flex items-center gap-1.5 font-mono text-[10px] tracking-widest uppercase text-zinc-500 mt-3">
                 <span className="text-amber-400">↓</span>
                 <span>Keep scrolling to reveal</span>
               </div>

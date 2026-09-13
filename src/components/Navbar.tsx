@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon, FileText, ArrowUpRight, Code2 } from 'lucide-react';
+import { Menu, X, FileText, ArrowUpRight, Terminal } from 'lucide-react';
 import { Theme } from '../types';
 
 interface NavbarProps {
@@ -9,8 +9,6 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
-  theme,
-  onToggleTheme,
   onOpenResumeModal,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -18,20 +16,19 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [activeSection, setActiveSection] = useState('hero');
 
   const navLinks = [
-    { label: 'About', href: '#about' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Experience', href: '#experience' },
-    { label: 'Education', href: '#education' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Work', href: '#projects', num: '01' },
+    { label: 'About', href: '#about', num: '02' },
+    { label: 'Stack', href: '#skills', num: '03' },
+    { label: 'Experience', href: '#experience', num: '04' },
+    { label: 'Contact', href: '#contact', num: '05' },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 30);
 
-      const sections = ['hero', 'about', 'skills', 'projects', 'experience', 'education', 'contact'];
-      const scrollPosition = window.scrollY + 150;
+      const sections = ['hero', 'projects', 'about', 'skills', 'experience', 'contact'];
+      const scrollPosition = window.scrollY + 180;
 
       for (const section of sections) {
         const el = document.getElementById(section);
@@ -63,37 +60,33 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header
       id="main-navbar"
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-white/85 dark:bg-slate-900/85 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 shadow-sm py-3'
-          : 'bg-transparent py-5'
+          ? 'bg-[#09090b]/80 backdrop-blur-xl border-b border-white/[0.08] py-4 shadow-2xl'
+          : 'bg-transparent py-6'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between">
-          {/* Brand Logo */}
+          
+          {/* Minimalist Monospace Brand Metadata */}
           <a
             href="#hero"
             id="brand-logo-link"
             onClick={(e) => handleLinkClick(e, '#hero')}
-            className="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded-lg p-1"
+            className="group flex items-center gap-3 focus:outline-none"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-yellow-400 flex items-center justify-center text-slate-950 font-bold shadow-md shadow-amber-500/20 group-hover:scale-105 transition-transform">
-              <Code2 className="w-5 h-5" />
+            <div className="w-8 h-8 rounded-lg bg-zinc-900 border border-white/10 flex items-center justify-center text-amber-400 group-hover:border-amber-400/50 group-hover:scale-105 transition-all">
+              <Terminal className="w-4 h-4" />
             </div>
-            <div>
-              <span className="font-bold text-lg tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5">
-                Rumpa Koley
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
-              </span>
-              <span className="block text-xs font-medium text-slate-500 dark:text-slate-400">
-                Full Stack Developer
-              </span>
+            <div className="font-mono text-[11px] tracking-widest uppercase leading-tight">
+              <span className="text-zinc-100 font-bold tracking-tight block">Rumpa Koley</span>
+              <span className="text-zinc-400 text-[9px] block">Full Stack Dev ©2026</span>
             </div>
           </a>
 
           {/* Desktop Navigation */}
-          <nav id="desktop-nav" aria-label="Main Navigation" className="hidden md:flex items-center gap-1 lg:gap-2">
+          <nav id="desktop-nav" aria-label="Main Navigation" className="hidden md:flex items-center gap-8 font-mono text-[11px] tracking-widest uppercase">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.replace('#', '');
               return (
@@ -102,77 +95,54 @@ export const Navbar: React.FC<NavbarProps> = ({
                   id={`nav-link-${link.label.toLowerCase()}`}
                   href={link.href}
                   onClick={(e) => handleLinkClick(e, link.href)}
-                  className={`px-3.5 py-1.5 rounded-lg text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
+                  className={`transition-all duration-300 relative py-1 ${
                     isActive
-                      ? 'text-amber-600 dark:text-amber-400 bg-amber-50/70 dark:bg-amber-950/40 font-semibold'
-                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/60 dark:hover:bg-slate-800/60'
+                      ? 'text-amber-400 font-semibold opacity-100'
+                      : 'text-zinc-400 hover:text-zinc-100 opacity-70 hover:opacity-100'
                   }`}
                 >
+                  <span className="opacity-40 mr-1 text-[9px]">[{link.num}]</span>
                   {link.label}
+                  {isActive && (
+                    <span className="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-amber-400 rounded-full" />
+                  )}
                 </a>
               );
             })}
           </nav>
 
           {/* Right Action Controls */}
-          <div className="hidden md:flex items-center gap-3">
-            {/* Theme Toggle Button */}
-            <button
-              id="theme-toggle-button"
-              type="button"
-              onClick={onToggleTheme}
-              aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-              className="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors border border-slate-200/80 dark:border-slate-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
-            >
-              {theme === 'light' ? (
-                <Moon className="w-4 h-4 text-slate-700" />
-              ) : (
-                <Sun className="w-4 h-4 text-amber-400" />
-              )}
-            </button>
-
-            {/* Resume Button */}
+          <div className="hidden md:flex items-center gap-4">
             <button
               id="nav-resume-button"
               type="button"
               onClick={onOpenResumeModal}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors border border-slate-200/80 dark:border-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-mono text-[11px] tracking-widest uppercase text-zinc-300 bg-zinc-900/80 hover:bg-zinc-850 hover:text-white border border-white/10 hover:border-amber-400/50 transition-all shadow-sm"
             >
-              <FileText className="w-3.5 h-3.5 text-amber-500" />
+              <FileText className="w-3.5 h-3.5 text-amber-400" />
               <span>Resume</span>
             </button>
 
-            {/* Let's Connect CTA */}
             <a
               id="nav-contact-cta"
               href="#contact"
               onClick={(e) => handleLinkClick(e, '#contact')}
-              className="inline-flex items-center gap-1 px-4 py-2 rounded-xl text-xs font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 dark:bg-amber-400 dark:hover:bg-amber-300 transition-all shadow-sm shadow-amber-500/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
+              className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full font-mono text-[11px] tracking-widest uppercase font-bold text-zinc-950 bg-amber-400 hover:bg-amber-300 transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 hover:scale-[1.02]"
             >
               <span>Let's Talk</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
           </div>
 
-          {/* Mobile Menu & Theme Toggle */}
-          <div className="flex items-center gap-2 md:hidden">
-            <button
-              id="mobile-theme-toggle"
-              type="button"
-              onClick={onToggleTheme}
-              aria-label="Toggle dark mode"
-              className="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-800"
-            >
-              {theme === 'light' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4 text-amber-400" />}
-            </button>
-
+          {/* Mobile Menu Button */}
+          <div className="flex items-center gap-3 md:hidden">
             <button
               id="mobile-menu-toggle"
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-expanded={mobileMenuOpen}
               aria-label="Toggle navigation menu"
-              className="p-2 rounded-lg text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-800"
+              className="p-2 rounded-xl text-zinc-300 bg-zinc-900 border border-white/10 hover:border-white/20"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -184,23 +154,24 @@ export const Navbar: React.FC<NavbarProps> = ({
       {mobileMenuOpen && (
         <div
           id="mobile-menu-drawer"
-          className="md:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-4 pt-3 pb-6 shadow-xl animate-in slide-in-from-top-2 duration-200"
+          className="md:hidden bg-[#09090b]/95 backdrop-blur-2xl border-b border-white/10 px-6 pt-4 pb-8 shadow-2xl animate-in slide-in-from-top-2 duration-300"
         >
-          <div className="flex flex-col gap-1.5 mb-4">
+          <div className="flex flex-col gap-2 mb-6 font-mono text-xs tracking-widest uppercase">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 id={`mobile-nav-${link.label.toLowerCase()}`}
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
-                className="px-4 py-2.5 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                className="px-4 py-3 rounded-xl text-zinc-300 hover:text-white hover:bg-zinc-900 border border-transparent hover:border-white/5 transition-colors"
               >
+                <span className="opacity-40 mr-2 text-[10px]">[{link.num}]</span>
                 {link.label}
               </a>
             ))}
           </div>
 
-          <div className="flex flex-col gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+          <div className="flex flex-col gap-3 pt-4 border-t border-white/10">
             <button
               id="mobile-resume-button"
               type="button"
@@ -208,18 +179,18 @@ export const Navbar: React.FC<NavbarProps> = ({
                 setMobileMenuOpen(false);
                 onOpenResumeModal();
               }}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-slate-700 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+              className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-mono text-xs tracking-widest uppercase text-zinc-200 bg-zinc-900 hover:bg-zinc-800 border border-white/10 transition-colors"
             >
-              <FileText className="w-4 h-4 text-amber-500" />
+              <FileText className="w-4 h-4 text-amber-400" />
               View & Download Resume
             </button>
             <a
               id="mobile-contact-cta"
               href="#contact"
               onClick={(e) => handleLinkClick(e, '#contact')}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 transition-colors shadow-sm"
+              className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-mono text-xs tracking-widest uppercase font-bold text-zinc-950 bg-amber-400 hover:bg-amber-300 transition-colors shadow-md shadow-amber-500/20"
             >
-              Contact Me Directly
+              Contact Directly
               <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>

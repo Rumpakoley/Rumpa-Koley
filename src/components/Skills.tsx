@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react';
-import { Search, Sparkles, Filter, Check, Layers, Code, Server, Database, Terminal, Cpu } from 'lucide-react';
+import { motion } from 'motion/react';
+import { Search, Sparkles, Code, Server, Database, Terminal, Cpu } from 'lucide-react';
 import { SKILL_CATEGORIES } from '../data/portfolioData';
 
 export const Skills: React.FC = () => {
@@ -33,10 +34,6 @@ export const Skills: React.FC = () => {
       .filter((cat) => cat.skills.length > 0);
   }, [selectedCategory, searchQuery]);
 
-  const totalSkillCount = useMemo(() => {
-    return SKILL_CATEGORIES.reduce((acc, cat) => acc + cat.skills.length, 0);
-  }, []);
-
   const getCategoryIcon = (categoryName: string) => {
     if (categoryName.includes('Frontend')) return Code;
     if (categoryName.includes('Backend')) return Server;
@@ -46,174 +43,154 @@ export const Skills: React.FC = () => {
   };
 
   return (
-    <section id="skills" aria-label="Technical Skills" className="py-20 bg-slate-50 dark:bg-slate-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 text-xs font-semibold tracking-wide uppercase mb-3">
-              Technical Stack
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-              Verified skills & production-tested technologies.
-            </h2>
-            <p className="mt-2 text-slate-600 dark:text-slate-400 text-sm sm:text-base">
-              Organized by domain expertise without exaggerated percentage bars. Focused on modern full-stack performance and developer velocity.
-            </p>
+    <section id="skills" aria-label="Technical Stack" className="py-24 px-6 sm:px-8 lg:px-12 max-w-7xl mx-auto border-t border-white/[0.08]">
+      
+      {/* Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14">
+        <div>
+          <div className="flex items-center gap-2 font-mono text-[11px] tracking-widest uppercase text-amber-400 mb-3">
+            <span className="w-6 h-[1px] bg-amber-400" />
+            <span>Technical Capabilities</span>
           </div>
-
-          {/* Search Input Filter */}
-          <div className="w-full md:w-72 relative">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-            <input
-              id="skills-search-input"
-              type="text"
-              placeholder="Search technologies (e.g. React, Docker)..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500 transition-all shadow-xs"
-            />
-            {searchQuery && (
-              <button
-                type="button"
-                onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600"
-              >
-                Clear
-              </button>
-            )}
-          </div>
+          <h2 className="text-4xl sm:text-6xl font-display font-extrabold tracking-tight text-zinc-100">
+            Stack & Technologies
+          </h2>
+          <p className="mt-2 text-zinc-400 text-sm sm:text-base max-w-xl font-sans leading-relaxed">
+            Verified production competencies organized by domain architecture. Focused on high throughput and developer velocity.
+          </p>
         </div>
 
-        {/* Category Pill Filters */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 scrollbar-none">
-          {categories.map((cat) => {
-            const isSelected = selectedCategory === cat;
-            return (
-              <button
-                key={cat}
-                id={`skill-filter-${cat.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
-                type="button"
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium whitespace-nowrap transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
-                  isSelected
-                    ? 'bg-amber-400 text-slate-950 font-bold shadow-sm shadow-amber-500/20'
-                    : 'bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-800'
-                }`}
-              >
-                {cat}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Categorized Skills Render */}
-        <div className="space-y-10">
-          {filteredSkills.length === 0 ? (
-            <div className="text-center py-16 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-8">
-              <p className="text-slate-500 dark:text-slate-400 text-sm">
-                No technologies found matching "{searchQuery}".
-              </p>
-              <button
-                type="button"
-                onClick={() => {
-                  setSearchQuery('');
-                  setSelectedCategory('All');
-                }}
-                className="mt-3 text-xs font-semibold text-amber-600 dark:text-amber-400 hover:underline"
-              >
-                Reset filters
-              </button>
-            </div>
-          ) : (
-            filteredSkills.map((categoryGroup) => {
-              const CategoryIcon = getCategoryIcon(categoryGroup.category);
-              return (
-                <div key={categoryGroup.category} className="space-y-4">
-                  {/* Category Header */}
-                  <div className="flex items-center gap-2.5 pb-2 border-b border-slate-200 dark:border-slate-800">
-                    <div className="p-1.5 rounded-lg bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400">
-                      <CategoryIcon className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-slate-900 dark:text-white">
-                        {categoryGroup.category}
-                      </h3>
-                      <p className="text-xs text-slate-500 dark:text-slate-400">
-                        {categoryGroup.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Skills Grid for this Category */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3.5">
-                    {categoryGroup.skills.map((skill) => (
-                      <div
-                        key={skill.name}
-                        id={`skill-card-${skill.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
-                        className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-amber-400 dark:hover:border-amber-600/60 transition-all hover:shadow-sm flex flex-col justify-between group"
-                      >
-                        <div>
-                          <div className="flex items-start justify-between gap-2 mb-2">
-                            <h4 className="font-bold text-sm text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
-                              {skill.name}
-                            </h4>
-                            <span
-                              className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
-                                skill.level === 'Core Expertise'
-                                  ? 'bg-amber-50 dark:bg-amber-950/70 text-amber-700 dark:text-amber-300 border border-amber-200/60 dark:border-amber-800/60'
-                                  : skill.level === 'Production Ready'
-                                  ? 'bg-emerald-50 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60'
-                                  : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
-                              }`}
-                            >
-                              {skill.level}
-                            </span>
-                          </div>
-
-                          {skill.description && (
-                            <p className="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 mb-3">
-                              {skill.description}
-                            </p>
-                          )}
-                        </div>
-
-                        <div className="pt-2 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400 dark:text-slate-500 font-medium">
-                          <span>Experience:</span>
-                          <span className="text-slate-600 dark:text-slate-300 font-semibold">{skill.experienceYears}</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              );
-            })
+        {/* Minimal Search Input */}
+        <div className="w-full md:w-80 relative">
+          <Search className="w-4 h-4 text-zinc-500 absolute left-4 top-1/2 -translate-y-1/2" />
+          <input
+            id="skills-search-input"
+            type="text"
+            placeholder="Filter technologies (e.g. React, Docker)..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-11 pr-4 py-2.5 text-xs font-mono rounded-full bg-zinc-900/90 border border-white/10 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-amber-400/80 transition-all shadow-inner"
+          />
+          {searchQuery && (
+            <button
+              type="button"
+              onClick={() => setSearchQuery('')}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-mono text-zinc-400 hover:text-amber-400"
+            >
+              Clear
+            </button>
           )}
         </div>
-
-        {/* Bottom Legend */}
-        <div className="mt-12 p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200/70 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
-          <div className="flex items-center gap-2">
-            <span className="font-semibold text-slate-700 dark:text-slate-300">Proficiency Standards:</span>
-          </div>
-          <div className="flex flex-wrap items-center gap-4">
-            <span className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
-              <strong className="text-slate-700 dark:text-slate-300 font-medium">Core Expertise</strong> (Primary day-to-day tools)
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-              <strong className="text-slate-700 dark:text-slate-300 font-medium">Production Ready</strong> (Delivered production features)
-            </span>
-            <span className="flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-slate-400" />
-              <strong className="text-slate-700 dark:text-slate-300 font-medium">Proficient</strong> (Applied in projects & pipelines)
-            </span>
-          </div>
-        </div>
-
       </div>
+
+      {/* Category Pills */}
+      <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 scrollbar-none font-mono text-xs tracking-widest uppercase">
+        {categories.map((cat) => {
+          const isSelected = selectedCategory === cat;
+          return (
+            <button
+              key={cat}
+              id={`skill-filter-${cat.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
+              type="button"
+              onClick={() => setSelectedCategory(cat)}
+              className={`px-4 py-2 rounded-full transition-all whitespace-nowrap ${
+                isSelected
+                  ? 'bg-amber-400 text-zinc-950 font-bold shadow-md shadow-amber-500/20'
+                  : 'bg-zinc-900/80 text-zinc-400 hover:text-zinc-200 border border-white/5 hover:border-white/10'
+              }`}
+            >
+              {cat}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Categorized Skills Render */}
+      <div className="space-y-12">
+        {filteredSkills.length === 0 ? (
+          <div className="text-center py-16 bg-zinc-900/50 rounded-3xl border border-white/10 p-8">
+            <p className="text-zinc-400 text-sm font-mono">
+              No technologies found matching "{searchQuery}".
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                setSearchQuery('');
+                setSelectedCategory('All');
+              }}
+              className="mt-3 text-xs font-mono uppercase tracking-widest text-amber-400 hover:underline"
+            >
+              Reset filters
+            </button>
+          </div>
+        ) : (
+          filteredSkills.map((categoryGroup) => {
+            const CategoryIcon = getCategoryIcon(categoryGroup.category);
+            return (
+              <div key={categoryGroup.category} className="space-y-5">
+                {/* Category Header */}
+                <div className="flex items-center gap-3 pb-3 border-b border-white/[0.08]">
+                  <div className="p-2 rounded-xl bg-zinc-900 border border-white/10 text-amber-400">
+                    <CategoryIcon className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-display font-bold text-zinc-100">
+                      {categoryGroup.category}
+                    </h3>
+                    <p className="text-xs text-zinc-400 font-mono">
+                      {categoryGroup.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Skills Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {categoryGroup.skills.map((skill) => (
+                    <motion.div
+                      key={skill.name}
+                      whileHover={{ y: -3 }}
+                      transition={{ duration: 0.2 }}
+                      id={`skill-card-${skill.name.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
+                      className="p-5 rounded-2xl bg-zinc-900/60 border border-white/10 hover:border-amber-400/40 transition-all flex flex-col justify-between group shadow-sm"
+                    >
+                      <div>
+                        <div className="flex items-start justify-between gap-2 mb-2">
+                          <h4 className="font-bold text-sm text-zinc-100 group-hover:text-amber-400 transition-colors">
+                            {skill.name}
+                          </h4>
+                          <span
+                            className={`text-[9px] font-mono tracking-wider px-2 py-0.5 rounded-full ${
+                              skill.level === 'Core Expertise'
+                                ? 'bg-amber-400/10 text-amber-400 border border-amber-400/20'
+                                : skill.level === 'Production Ready'
+                                ? 'bg-emerald-400/10 text-emerald-400 border border-emerald-400/20'
+                                : 'bg-zinc-800 text-zinc-300'
+                            }`}
+                          >
+                            {skill.level}
+                          </span>
+                        </div>
+
+                        {skill.description && (
+                          <p className="text-xs text-zinc-400 line-clamp-2 mb-3 leading-relaxed font-sans">
+                            {skill.description}
+                          </p>
+                        )}
+                      </div>
+
+                      <div className="pt-3 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-zinc-400 uppercase tracking-wider">
+                        <span>Experience</span>
+                        <span className="text-zinc-200 font-bold">{skill.experienceYears}</span>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            );
+          })
+        )}
+      </div>
+
     </section>
   );
 };

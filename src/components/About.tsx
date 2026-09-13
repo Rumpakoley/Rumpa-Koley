@@ -1,95 +1,178 @@
-import React from 'react';
-import { Code, Database, Layout, ShieldCheck, Zap, BookOpen } from 'lucide-react';
+import React, { useRef, useState, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'motion/react';
+import { ArrowDown, Code2, Server, Database, Cpu, ShieldCheck, Sparkles, Zap, Layers } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 export const About: React.FC = () => {
-  const pillars = [
-    {
-      icon: Layout,
-      title: 'Frontend Engineering',
-      description: 'Creating accessible, responsive, and pixel-precise user interfaces with React, TypeScript, and Tailwind CSS.',
-    },
-    {
-      icon: Database,
-      title: 'Backend & Data Architecture',
-      description: 'Designing modular REST APIs, secure authentication flows, and relational / document database schemas with PostgreSQL & MongoDB.',
-    },
-    {
-      icon: Zap,
-      title: 'Performance & Optimization',
-      description: 'Prioritizing bundle reduction, network caching, sub-100ms response targets, and 95+ Lighthouse benchmark scores.',
-    },
-    {
-      icon: BookOpen,
-      title: 'Continuous Growth Mindset',
-      description: 'Constantly testing new ecosystem standards, contributing to open-source, and sharpening algorithmic problem solving.',
-    },
-  ];
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  // Engineer manifesto statement split by words for scroll illumination (Mrinmoy signature)
+  const manifestoText = "Rumpa is a full-stack developer and software engineer with a deep passion for building resilient, high-performance web systems. Specializing in TypeScript, modern React architectures, and distributed backend services, she brings an architectural precision and user-first visual signature to every application. Driven by clean code and systematic design, she handles both frontend fidelity and database scalability, constantly engineering digital experiences that humans can trust and love using.";
+  const words = manifestoText.split(' ');
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end'],
+  });
+
+  const [activeWordIndex, setActiveWordIndex] = useState(0);
+
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.on('change', (latest) => {
+      const idx = Math.floor(latest * words.length * 1.05);
+      setActiveWordIndex(idx);
+    });
+    return () => unsubscribe();
+  }, [scrollYProgress, words.length]);
 
   return (
-    <section id="about" aria-label="About Me" className="py-20 bg-white dark:bg-slate-900/50 border-y border-slate-200/60 dark:border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="max-w-3xl mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 text-xs font-semibold tracking-wide uppercase mb-3">
-            About Me
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Crafting resilient software with end-to-end technical empathy.
-          </h2>
-        </div>
-
-        {/* 2-Column Content Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+    <section id="about" aria-label="About and Philosophy" className="relative border-t border-white/[0.08] bg-[#070709]">
+      
+      {/* Scroll-Driven Sticky Philosophy Reveal Container */}
+      <div ref={containerRef} className="h-[260vh] relative w-full">
+        <div className="sticky top-0 h-screen flex flex-col justify-center px-6 sm:px-8 lg:px-12 max-w-7xl mx-auto overflow-hidden">
           
-          {/* Narrative / Bio */}
-          <div className="lg:col-span-6 space-y-4 text-slate-600 dark:text-slate-300 leading-relaxed text-base">
-            <p>
-              I am a <strong className="text-slate-900 dark:text-white font-semibold">Full Stack Developer</strong> driven by a passion for dissecting complex problems and translating them into elegant, reliable digital products. My journey began with algorithmic problem solving and quickly evolved into engineering full-stack production systems.
-            </p>
-            <p>
-              Whether structuring efficient PostgreSQL relations, tuning Express middleware pipelines, or refining micro-interactions in React, I bridge the gap between backend scalability and delightful, accessible user interfaces. I value clear code architecture, comprehensive testing, and transparent documentation.
-            </p>
-            <p>
-              Beyond routine code development, I actively stay abreast of modern cloud practices, contribute to collaborative developer workflows, and solve data structure challenges. I believe that true engineering craftsmanship lives at the intersection of technical rigor and thoughtful human-centered design.
-            </p>
+          {/* Top Progress Track */}
+          <motion.div
+            className="absolute top-0 left-0 h-[2px] bg-amber-400 origin-left z-50"
+            style={{ scaleX: scrollYProgress }}
+          />
 
-            {/* Quick Quote / Personal Principle */}
-            <div className="pt-2">
-              <blockquote className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border-l-4 border-amber-500 text-sm italic text-slate-700 dark:text-slate-300">
-                "Great software is not just about writing code that machines can execute; it's about building systems that humans can maintain, scale, and love using."
-              </blockquote>
-            </div>
-          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+            
+            {/* Left Column: Visual Portrait / Identity Graphic */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="hidden lg:block lg:col-span-4 rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 p-8 relative group"
+            >
+              <div className="flex flex-col justify-between h-[380px]">
+                <div className="flex items-center justify-between font-mono text-[11px] tracking-widest uppercase text-zinc-400">
+                  <span>Manifesto</span>
+                  <Sparkles className="w-4 h-4 text-amber-400" />
+                </div>
 
-          {/* Core Pillars Grid */}
-          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {pillars.map((pillar, idx) => {
-              const Icon = pillar.icon;
-              return (
-                <div
-                  key={idx}
-                  id={`about-pillar-${idx}`}
-                  className="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/70 dark:border-slate-800 hover:border-amber-400 dark:hover:border-amber-600/60 transition-colors"
-                >
-                  <div className="w-9 h-9 rounded-lg bg-amber-100 dark:bg-amber-950/70 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-3">
-                    <Icon className="w-5 h-5" />
+                <div className="space-y-4">
+                  <div className="w-14 h-14 rounded-2xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400">
+                    <Code2 className="w-7 h-7" />
                   </div>
-                  <h3 className="font-semibold text-slate-900 dark:text-white text-base mb-1.5">
-                    {pillar.title}
-                  </h3>
-                  <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                    {pillar.description}
+                  <h4 className="text-2xl font-display font-bold text-zinc-100">
+                    Rumpa Koley
+                  </h4>
+                  <p className="text-xs text-zinc-400 font-mono">
+                    Full Stack Developer & Systems Designer based in Kolkata, India.
                   </p>
                 </div>
-              );
-            })}
+
+                <div className="pt-4 border-t border-white/10 flex items-center justify-between font-mono text-[10px] tracking-widest text-zinc-400 uppercase">
+                  <span>Status: Available</span>
+                  <span className="text-emerald-400">● Live</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right Column: Scroll-Revealed Words */}
+            <div className="lg:col-span-8 flex flex-col justify-center">
+              <div className="font-mono text-[11px] tracking-widest uppercase text-amber-400 mb-6 flex items-center gap-2">
+                <span className="w-6 h-[1px] bg-amber-400" />
+                <span>Engineering Manifesto</span>
+              </div>
+
+              {/* Dynamic Word Light-Up */}
+              <h3 className="flex flex-wrap text-2xl sm:text-3xl md:text-4xl lg:text-[2.65rem] leading-[1.3] font-sans font-medium tracking-tight">
+                {words.map((word, idx) => {
+                  const isLit = idx < activeWordIndex;
+                  return (
+                    <motion.span
+                      key={idx}
+                      animate={{
+                        opacity: isLit ? 1 : 0.12,
+                        y: isLit ? 0 : 4,
+                        color: isLit ? '#ffffff' : '#71717a',
+                      }}
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                      className="mr-[0.3em] my-[0.12em] inline-block transition-all"
+                    >
+                      {word}
+                    </motion.span>
+                  );
+                })}
+              </h3>
+
+              {/* Scroll Guidance Indicator */}
+              <motion.div
+                animate={{ opacity: activeWordIndex >= words.length ? 0 : 0.6 }}
+                className="flex items-center gap-2 mt-8 font-mono text-[11px] tracking-widest uppercase text-zinc-400"
+              >
+                <motion.div
+                  animate={{ y: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                >
+                  <ArrowDown className="w-3.5 h-3.5 text-amber-400" />
+                </motion.div>
+                <span>Keep scrolling to reveal philosophy</span>
+              </motion.div>
+            </div>
+
           </div>
 
         </div>
-
       </div>
+
+      {/* 3-Column Domain Expertise Grid (Underneath Scroll Reveal) */}
+      <div className="border-t border-white/[0.08] px-6 sm:px-8 lg:px-12 py-20 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+          
+          {/* Column 1: Core Architecture */}
+          <div className="space-y-6">
+            <div className="flex items-center gap-3 font-mono text-[11px] tracking-widest uppercase text-amber-400">
+              <Layers className="w-4 h-4" />
+              <h4>Core Engineering</h4>
+            </div>
+            <ul className="space-y-3.5 text-lg sm:text-xl font-medium tracking-tight text-zinc-200">
+              <li className="hover:text-amber-400 transition-colors">Component-Driven Frontend Architecture</li>
+              <li className="hover:text-amber-400 transition-colors">Modular REST & Express API Design</li>
+              <li className="hover:text-amber-400 transition-colors">Relational & Document DB Schema Tuning</li>
+              <li className="hover:text-amber-400 transition-colors">Real-Time WebSocket State Sync</li>
+              <li className="hover:text-amber-400 transition-colors">WCAG 2.1 AA Accessibility Standards</li>
+            </ul>
+          </div>
+
+          {/* Column 2: Stack & Tools */}
+          <div className="space-y-6">
+            <div className="flex items-center gap-3 font-mono text-[11px] tracking-widest uppercase text-amber-400">
+              <Server className="w-4 h-4" />
+              <h4>Production Stack</h4>
+            </div>
+            <ul className="space-y-3.5 text-lg sm:text-xl font-medium tracking-tight text-zinc-200">
+              <li className="hover:text-amber-400 transition-colors">React 19 & Next.js</li>
+              <li className="hover:text-amber-400 transition-colors">TypeScript & Node.js</li>
+              <li className="hover:text-amber-400 transition-colors">PostgreSQL & MongoDB</li>
+              <li className="hover:text-amber-400 transition-colors">Tailwind CSS & Framer Motion</li>
+              <li className="hover:text-amber-400 transition-colors">Docker, Git & Vercel Cloud</li>
+            </ul>
+          </div>
+
+          {/* Column 3: Philosophy & Standards */}
+          <div className="space-y-6">
+            <div className="flex items-center gap-3 font-mono text-[11px] tracking-widest uppercase text-amber-400">
+              <ShieldCheck className="w-4 h-4" />
+              <h4>Quality Standards</h4>
+            </div>
+            <ul className="space-y-3.5 text-lg sm:text-xl font-medium tracking-tight text-zinc-200">
+              <li className="hover:text-amber-400 transition-colors">Sub-100ms P95 API Response Targets</li>
+              <li className="hover:text-amber-400 transition-colors">95+ Google Lighthouse Benchmark Scores</li>
+              <li className="hover:text-amber-400 transition-colors">Automated CI/CD Test Verification</li>
+              <li className="hover:text-amber-400 transition-colors">Zero Unhandled Promise Rejections</li>
+              <li className="hover:text-amber-400 transition-colors">99.9% Uptime Production Mindset</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
     </section>
   );
 };

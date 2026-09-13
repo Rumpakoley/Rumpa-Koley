@@ -48,26 +48,12 @@ export const About: React.FC = () => {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="hidden lg:block lg:col-span-4 rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 relative group shadow-2xl h-[380px]"
             >
-              {/* Portrait Image with Cinematic Grayscale-to-Color / Vignette */}
+              {/* Clean Portrait Image */}
               <img
                 src={PERSONAL_INFO.avatarUrl}
                 alt={PERSONAL_INFO.name}
-                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-90 contrast-105"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
               />
-
-              {/* Ambient Dark Gradient Vignette Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-black/30 pointer-events-none" />
-
-              {/* Content Overlaid on Card */}
-              <div className="absolute inset-0 p-6 flex flex-col justify-between pointer-events-none">
-                {/* Top Bar */}
-                <div className="flex items-center justify-between font-mono text-[11px] tracking-widest uppercase text-zinc-300">
-                  <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15">Manifesto</span>
-                  <div className="w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-white/15 flex items-center justify-center text-amber-400">
-                    <Sparkles className="w-4 h-4" />
-                  </div>
-                </div>
-              </div>
             </motion.div>
 
             {/* Right Column: Scroll-Revealed Words */}

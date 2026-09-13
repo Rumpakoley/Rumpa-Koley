@@ -26,11 +26,11 @@ export const About: React.FC = () => {
   }, [scrollYProgress, words.length]);
 
   return (
-    <section id="about" aria-label="About and Philosophy" className="relative border-t border-white/[0.08] bg-[#070709]">
+    <section id="about" aria-label="About and Philosophy" className="relative border-t border-white/[0.08] bg-[#09090b] z-10">
       
       {/* Scroll-Driven Sticky Philosophy Reveal Container */}
-      <div ref={containerRef} className="h-[260vh] relative w-full">
-        <div className="sticky top-0 h-screen flex flex-col justify-center px-6 sm:px-8 lg:px-12 max-w-7xl mx-auto overflow-hidden">
+      <div ref={containerRef} className="h-[240vh] relative w-full">
+        <div className="sticky top-20 h-[calc(100vh-5rem)] flex flex-col justify-center px-6 sm:px-8 lg:px-12 max-w-7xl mx-auto overflow-hidden">
           
           {/* Top Progress Track */}
           <motion.div
@@ -38,7 +38,7 @@ export const About: React.FC = () => {
             style={{ scaleX: scrollYProgress }}
           />
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
             
             {/* Left Column: Visual Portrait / Identity Graphic */}
             <motion.div
@@ -46,27 +46,27 @@ export const About: React.FC = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="hidden lg:block lg:col-span-4 rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 p-8 relative group"
+              className="hidden lg:block lg:col-span-4 rounded-3xl overflow-hidden bg-zinc-900/90 border border-white/10 p-7 relative group shadow-xl"
             >
-              <div className="flex flex-col justify-between h-[380px]">
+              <div className="flex flex-col justify-between h-[340px]">
                 <div className="flex items-center justify-between font-mono text-[11px] tracking-widest uppercase text-zinc-400">
                   <span>Manifesto</span>
                   <Sparkles className="w-4 h-4 text-amber-400" />
                 </div>
 
-                <div className="space-y-4">
-                  <div className="w-14 h-14 rounded-2xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400">
-                    <Code2 className="w-7 h-7" />
+                <div className="space-y-3">
+                  <div className="w-12 h-12 rounded-2xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400">
+                    <Code2 className="w-6 h-6" />
                   </div>
-                  <h4 className="text-2xl font-display font-bold text-zinc-100">
+                  <h4 className="text-xl font-display font-bold text-zinc-100">
                     Rumpa Koley
                   </h4>
-                  <p className="text-xs text-zinc-400 font-mono">
+                  <p className="text-xs text-zinc-400 font-mono leading-relaxed">
                     Full Stack Developer & Systems Designer based in Kolkata, India.
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-white/10 flex items-center justify-between font-mono text-[10px] tracking-widest text-zinc-400 uppercase">
+                <div className="pt-3 border-t border-white/10 flex items-center justify-between font-mono text-[10px] tracking-widest text-zinc-400 uppercase">
                   <span>Status: Available</span>
                   <span className="text-emerald-400">● Live</span>
                 </div>
@@ -75,25 +75,25 @@ export const About: React.FC = () => {
 
             {/* Right Column: Scroll-Revealed Words */}
             <div className="lg:col-span-8 flex flex-col justify-center">
-              <div className="font-mono text-[11px] tracking-widest uppercase text-amber-400 mb-6 flex items-center gap-2">
+              <div className="font-mono text-[11px] tracking-widest uppercase text-amber-400 mb-5 flex items-center gap-2">
                 <span className="w-6 h-[1px] bg-amber-400" />
                 <span>Engineering Manifesto</span>
               </div>
 
               {/* Dynamic Word Light-Up */}
-              <h3 className="flex flex-wrap text-2xl sm:text-3xl md:text-4xl lg:text-[2.65rem] leading-[1.3] font-sans font-medium tracking-tight">
+              <h3 className="flex flex-wrap text-xl sm:text-2xl md:text-3xl lg:text-[2.2rem] leading-[1.38] font-sans font-medium tracking-tight">
                 {words.map((word, idx) => {
                   const isLit = idx < activeWordIndex;
                   return (
                     <motion.span
                       key={idx}
                       animate={{
-                        opacity: isLit ? 1 : 0.12,
-                        y: isLit ? 0 : 4,
+                        opacity: isLit ? 1 : 0.14,
+                        y: isLit ? 0 : 2,
                         color: isLit ? '#ffffff' : '#71717a',
                       }}
-                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                      className="mr-[0.3em] my-[0.12em] inline-block transition-all"
+                      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                      className="mr-[0.3em] my-[0.1em] inline-block transition-all"
                     >
                       {word}
                     </motion.span>
@@ -104,10 +104,10 @@ export const About: React.FC = () => {
               {/* Scroll Guidance Indicator */}
               <motion.div
                 animate={{ opacity: activeWordIndex >= words.length ? 0 : 0.6 }}
-                className="flex items-center gap-2 mt-8 font-mono text-[11px] tracking-widest uppercase text-zinc-400"
+                className="flex items-center gap-2 mt-6 font-mono text-[11px] tracking-widest uppercase text-zinc-400"
               >
                 <motion.div
-                  animate={{ y: [0, 5, 0] }}
+                  animate={{ y: [0, 4, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
                 >
                   <ArrowDown className="w-3.5 h-3.5 text-amber-400" />

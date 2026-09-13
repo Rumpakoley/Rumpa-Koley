@@ -65,27 +65,24 @@ export const About: React.FC = () => {
             {/* Right Column: Scroll-Illuminated Words */}
             <div className="lg:col-span-7 flex flex-col justify-center relative">
               
-              {/* Phone / Mobile Portrait Header */}
-              <div className="flex items-center gap-3.5 mb-4 lg:hidden">
-                <div className="w-12 h-12 rounded-2xl overflow-hidden border border-white/20 shadow-lg shrink-0 bg-zinc-900">
+              {/* Phone / Mobile Standalone Portrait Card (Matching Reference) */}
+              <div className="lg:hidden mb-5 flex flex-col items-start">
+                <span className="font-mono text-[10px] sm:text-[11px] tracking-widest uppercase text-zinc-500 mb-2.5 block">
+                  About
+                </span>
+                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border border-white/15 shadow-xl bg-zinc-900">
                   <img
                     src={PERSONAL_INFO.avatarUrl}
                     alt={PERSONAL_INFO.name}
                     loading="eager"
                     decoding="async"
-                    className="w-full h-full object-cover object-center grayscale"
+                    className="w-full h-full object-cover object-center filter grayscale contrast-105"
                   />
-                </div>
-                <div>
-                  <h3 className="font-display font-bold text-base text-white">
-                    {PERSONAL_INFO.name}
-                  </h3>
-                  <p className="text-[11px] font-mono text-zinc-400">Full Stack Developer</p>
                 </div>
               </div>
 
               {/* Dynamic Word Light-Up */}
-              <h2 className="flex flex-wrap text-xl sm:text-2xl md:text-3xl lg:text-[1.85rem] xl:text-[2.1rem] leading-[1.38] lg:leading-[1.42] font-space font-medium tracking-tight">
+              <h2 className="flex flex-wrap text-lg sm:text-2xl md:text-3xl lg:text-[1.85rem] xl:text-[2.1rem] leading-[1.32] sm:leading-[1.38] lg:leading-[1.42] font-space font-medium tracking-tight">
                 {words.map((word, i) => {
                   const start = i / words.length;
                   const end = start + 1 / words.length;
@@ -99,6 +96,12 @@ export const About: React.FC = () => {
                   );
                 })}
               </h2>
+
+              {/* Mobile Scroll Hint */}
+              <div className="lg:hidden flex items-center gap-1.5 font-mono text-[10px] tracking-widest uppercase text-zinc-500 mt-4">
+                <span className="text-amber-400">↓</span>
+                <span>Keep scrolling to reveal</span>
+              </div>
 
             </div>
 

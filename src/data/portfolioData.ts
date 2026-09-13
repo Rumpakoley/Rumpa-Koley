@@ -12,7 +12,7 @@ export const PERSONAL_INFO = {
   location: 'Kolkata, India • Open to Global Remote Roles',
   availability: 'Available for Full-time Roles & Contracts',
   yearsOfExperience: '2+ Years',
-  projectsCompleted: '15+',
+  projectsCompleted: '5+',
   uptimeMindset: '99.9%',
   githubContributions: '850+',
 };

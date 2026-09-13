@@ -183,7 +183,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResumeModal }) => {
               </div>
               <div>
                 <div className="text-3xl sm:text-4xl font-display font-extrabold text-zinc-100 mb-1">
-                  15+ <span className="text-amber-400 text-2xl font-normal font-sans">Projects</span>
+                  5+ <span className="text-amber-400 text-2xl font-normal font-sans">Projects</span>
                 </div>
                 <p className="text-xs text-zinc-400 leading-relaxed">
                   Delivered modern web applications, REST architectures, and cloud services.

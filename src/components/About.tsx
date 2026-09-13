@@ -1,129 +1,85 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
+import React from 'react';
+import { motion } from 'motion/react';
 import { ArrowDown, Code2, Server, Database, Cpu, ShieldCheck, Sparkles, Zap, Layers } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 export const About: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  
-  // Engineer manifesto statement split by words for scroll illumination (Mrinmoy signature)
-  const manifestoText = "Rumpa is a full-stack developer and software engineer with a deep passion for building resilient, high-performance web systems. Specializing in TypeScript, modern React architectures, and distributed backend services, she brings an architectural precision and user-first visual signature to every application. Driven by clean code and systematic design, she handles both frontend fidelity and database scalability, constantly engineering digital experiences that humans can trust and love using.";
-  const words = manifestoText.split(' ');
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start start', 'end end'],
-  });
-
-  const [activeWordIndex, setActiveWordIndex] = useState(0);
-
-  useEffect(() => {
-    const unsubscribe = scrollYProgress.on('change', (latest) => {
-      const idx = Math.min(words.length, Math.floor(latest * words.length * 1.05));
-      setActiveWordIndex((prev) => (prev !== idx ? idx : prev));
-    });
-    return () => unsubscribe();
-  }, [scrollYProgress, words.length]);
-
   return (
-    <section id="about" aria-label="About and Philosophy" className="relative border-t border-white/[0.08] bg-[#09090b] z-10">
+    <section id="about" aria-label="About and Philosophy" className="py-24 sm:py-32 px-6 sm:px-8 lg:px-12 max-w-7xl mx-auto border-t border-white/[0.08] relative z-10">
       
-      {/* Scroll-Driven Sticky Philosophy Reveal Container */}
-      <div ref={containerRef} className="h-[240vh] relative w-full">
-        <div className="sticky top-20 h-[calc(100vh-5rem)] flex flex-col justify-center px-6 sm:px-8 lg:px-12 max-w-7xl mx-auto overflow-hidden">
-          
-          {/* Top Progress Track */}
-          <motion.div
-            className="absolute top-0 left-0 h-[2px] bg-amber-400 origin-left z-50"
-            style={{ scaleX: scrollYProgress }}
+      {/* Top Manifesto & Portrait Showcase */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center mb-24">
+        
+        {/* Desktop Left Column: Visual Portrait Graphic */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="hidden lg:block lg:col-span-4 rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 relative group shadow-2xl h-[420px]"
+        >
+          {/* Clean Portrait Image */}
+          <img
+            src={PERSONAL_INFO.avatarUrl}
+            alt={PERSONAL_INFO.name}
+            loading="eager"
+            decoding="async"
+            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
           />
+        </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-14 items-center">
-            
-            {/* Desktop Left Column: Visual Portrait Graphic */}
-            <div
-              className="hidden lg:block lg:col-span-4 rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 relative group shadow-2xl h-[380px]"
-            >
-              {/* Clean Portrait Image */}
+        {/* Right Column: Manifesto Statement */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="lg:col-span-8 flex flex-col justify-center"
+        >
+          {/* Phone / Mobile Portrait Header */}
+          <div className="flex items-center gap-4 mb-6 lg:hidden">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border border-amber-400/40 shadow-xl shrink-0 bg-zinc-900">
               <img
                 src={PERSONAL_INFO.avatarUrl}
                 alt={PERSONAL_INFO.name}
                 loading="eager"
                 decoding="async"
-                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover object-center"
               />
             </div>
-
-            {/* Right Column: Mobile Portrait Header + Scroll-Revealed Words */}
-            <div className="lg:col-span-8 flex flex-col justify-center">
-              
-              {/* Phone / Mobile Portrait Header */}
-              <div className="flex items-center gap-3.5 mb-4 lg:hidden">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl overflow-hidden border border-amber-400/40 shadow-lg shrink-0 bg-zinc-900">
-                  <img
-                    src={PERSONAL_INFO.avatarUrl}
-                    alt={PERSONAL_INFO.name}
-                    loading="eager"
-                    decoding="async"
-                    className="w-full h-full object-cover object-center"
-                  />
-                </div>
-                <div>
-                  <div className="font-mono text-[10px] tracking-widest uppercase text-amber-400 flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>Engineering Manifesto</span>
-                  </div>
-                  <h4 className="font-display font-bold text-base text-zinc-100">
-                    {PERSONAL_INFO.name}
-                  </h4>
-                </div>
-              </div>
-
-              {/* Desktop Section Tag */}
-              <div className="hidden lg:flex font-mono text-[11px] tracking-widest uppercase text-amber-400 mb-5 items-center gap-2">
-                <span className="w-6 h-[1px] bg-amber-400" />
+            <div>
+              <div className="font-mono text-[10px] tracking-widest uppercase text-amber-400 flex items-center gap-1.5 mb-1">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 <span>Engineering Manifesto</span>
               </div>
-
-              {/* Dynamic Word Light-Up with Pure CSS Hardware Acceleration */}
-              <h3 className="flex flex-wrap text-xl sm:text-2xl md:text-3xl lg:text-[2.2rem] leading-[1.38] font-sans font-medium tracking-tight">
-                {words.map((word, idx) => {
-                  const isLit = idx < activeWordIndex;
-                  return (
-                    <span
-                      key={idx}
-                      className={`mr-[0.3em] my-[0.1em] inline-block transition-all duration-200 ${
-                        isLit ? 'text-white opacity-100 translate-y-0' : 'text-zinc-500 opacity-20 translate-y-0.5'
-                      }`}
-                    >
-                      {word}
-                    </span>
-                  );
-                })}
+              <h3 className="font-display font-bold text-xl text-zinc-100">
+                {PERSONAL_INFO.name}
               </h3>
-
-              {/* Scroll Guidance Indicator */}
-              <motion.div
-                animate={{ opacity: activeWordIndex >= words.length ? 0 : 0.6 }}
-                className="flex items-center gap-2 mt-6 font-mono text-[11px] tracking-widest uppercase text-zinc-400"
-              >
-                <motion.div
-                  animate={{ y: [0, 4, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  <ArrowDown className="w-3.5 h-3.5 text-amber-400" />
-                </motion.div>
-                <span>Keep scrolling to reveal philosophy</span>
-              </motion.div>
+              <p className="text-xs font-mono text-zinc-400">Full Stack Developer & Systems Designer</p>
             </div>
-
           </div>
 
-        </div>
+          {/* Desktop Section Tag */}
+          <div className="hidden lg:flex font-mono text-[11px] tracking-widest uppercase text-amber-400 mb-6 items-center gap-2">
+            <span className="w-6 h-[1px] bg-amber-400" />
+            <span>Engineering Manifesto</span>
+          </div>
+
+          {/* Core Statement with Luxury Typography */}
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-[2.2rem] leading-[1.45] font-sans font-light text-zinc-300 tracking-tight">
+            Rumpa is a <strong className="text-white font-semibold">full-stack developer</strong> and software engineer with a deep passion for building <span className="text-amber-400 font-medium underline underline-offset-8 decoration-amber-400/30">resilient, high-performance web systems</span>. Specializing in <strong className="text-white font-semibold">TypeScript</strong>, modern <strong className="text-white font-semibold">React architectures</strong>, and distributed backend services, she brings an architectural precision and user-first visual signature to every application. Driven by clean code and systematic design, she handles both frontend fidelity and database scalability, constantly engineering digital experiences that humans can trust and love using.
+          </p>
+
+          <div className="mt-8 flex items-center gap-6 font-mono text-xs text-zinc-400 uppercase tracking-widest">
+            <span className="text-amber-400 font-bold">// Core Focus:</span>
+            <span>Scalability • Type Safety • Performance</span>
+          </div>
+        </motion.div>
+
       </div>
 
-      {/* 3-Column Domain Expertise Grid (Underneath Scroll Reveal) */}
-      <div className="border-t border-white/[0.08] px-6 sm:px-8 lg:px-12 py-20 max-w-7xl mx-auto">
+      {/* 3-Column Domain Expertise Grid */}
+      <div className="border-t border-white/[0.08] pt-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
           
           {/* Column 1: Core Architecture */}
@@ -132,7 +88,7 @@ export const About: React.FC = () => {
               <Layers className="w-4 h-4" />
               <h4>Core Engineering</h4>
             </div>
-            <ul className="space-y-3.5 text-lg sm:text-xl font-medium tracking-tight text-zinc-200">
+            <ul className="space-y-3.5 text-base sm:text-lg font-medium tracking-tight text-zinc-300">
               <li className="hover:text-amber-400 transition-colors">Component-Driven Frontend Architecture</li>
               <li className="hover:text-amber-400 transition-colors">Modular REST & Express API Design</li>
               <li className="hover:text-amber-400 transition-colors">Relational & Document DB Schema Tuning</li>
@@ -147,7 +103,7 @@ export const About: React.FC = () => {
               <Server className="w-4 h-4" />
               <h4>Production Stack</h4>
             </div>
-            <ul className="space-y-3.5 text-lg sm:text-xl font-medium tracking-tight text-zinc-200">
+            <ul className="space-y-3.5 text-base sm:text-lg font-medium tracking-tight text-zinc-300">
               <li className="hover:text-amber-400 transition-colors">React 19 & Next.js</li>
               <li className="hover:text-amber-400 transition-colors">TypeScript & Node.js</li>
               <li className="hover:text-amber-400 transition-colors">PostgreSQL & MongoDB</li>
@@ -162,7 +118,7 @@ export const About: React.FC = () => {
               <ShieldCheck className="w-4 h-4" />
               <h4>Quality Standards</h4>
             </div>
-            <ul className="space-y-3.5 text-lg sm:text-xl font-medium tracking-tight text-zinc-200">
+            <ul className="space-y-3.5 text-base sm:text-lg font-medium tracking-tight text-zinc-300">
               <li className="hover:text-amber-400 transition-colors">Sub-100ms P95 API Response Targets</li>
               <li className="hover:text-amber-400 transition-colors">95+ Google Lighthouse Benchmark Scores</li>
               <li className="hover:text-amber-400 transition-colors">Automated CI/CD Test Verification</li>

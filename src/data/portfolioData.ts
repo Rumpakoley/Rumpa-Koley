@@ -15,6 +15,7 @@ export const PERSONAL_INFO = {
   projectsCompleted: '5+',
   uptimeMindset: '99.9%',
   githubContributions: '850+',
+  avatarUrl: 'https://res.cloudinary.com/dpdtsaalf/image/upload/v1789314166/WhatsApp_Image_2026-09-13_at_9.10.52_PM_erjjqw.jpg',
 };
 
 export const PROJECTS: Project[] = [

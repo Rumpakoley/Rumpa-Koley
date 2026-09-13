@@ -46,29 +46,44 @@ export const About: React.FC = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="hidden lg:block lg:col-span-4 rounded-3xl overflow-hidden bg-zinc-900/90 border border-white/10 p-7 relative group shadow-xl"
+              className="hidden lg:block lg:col-span-4 rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 relative group shadow-2xl h-[380px]"
             >
-              <div className="flex flex-col justify-between h-[340px]">
-                <div className="flex items-center justify-between font-mono text-[11px] tracking-widest uppercase text-zinc-400">
-                  <span>Manifesto</span>
-                  <Sparkles className="w-4 h-4 text-amber-400" />
-                </div>
+              {/* Portrait Image with Cinematic Grayscale-to-Color / Vignette */}
+              <img
+                src={PERSONAL_INFO.avatarUrl}
+                alt={PERSONAL_INFO.name}
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 filter brightness-90 contrast-105"
+              />
 
-                <div className="space-y-3">
-                  <div className="w-12 h-12 rounded-2xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-amber-400">
-                    <Code2 className="w-6 h-6" />
+              {/* Ambient Dark Gradient Vignette Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-black/30 pointer-events-none" />
+
+              {/* Content Overlaid on Card */}
+              <div className="absolute inset-0 p-6 flex flex-col justify-between">
+                {/* Top Bar */}
+                <div className="flex items-center justify-between font-mono text-[11px] tracking-widest uppercase text-zinc-300">
+                  <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15">Manifesto</span>
+                  <div className="w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-white/15 flex items-center justify-center text-amber-400">
+                    <Sparkles className="w-4 h-4" />
                   </div>
-                  <h4 className="text-xl font-display font-bold text-zinc-100">
-                    Rumpa Koley
-                  </h4>
-                  <p className="text-xs text-zinc-400 font-mono leading-relaxed">
-                    Full Stack Developer & Systems Designer based in Kolkata, India.
-                  </p>
                 </div>
 
-                <div className="pt-3 border-t border-white/10 flex items-center justify-between font-mono text-[10px] tracking-widest text-zinc-400 uppercase">
-                  <span>Status: Available</span>
-                  <span className="text-emerald-400">● Live</span>
+                {/* Bottom Identity & Status */}
+                <div className="space-y-3">
+                  <div className="p-4 rounded-2xl bg-zinc-950/85 backdrop-blur-md border border-white/10 space-y-1.5">
+                    <div className="flex items-center justify-between">
+                      <h4 className="text-lg font-display font-bold text-white tracking-wide">
+                        {PERSONAL_INFO.name}
+                      </h4>
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                        Live
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-zinc-400 font-mono leading-relaxed">
+                      Full Stack Developer & Systems Designer • Kolkata, India
+                    </p>
+                  </div>
                 </div>
               </div>
             </motion.div>

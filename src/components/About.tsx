@@ -38,20 +38,20 @@ export const About: React.FC = () => {
   });
 
   return (
-    <section id="about" aria-label="About" className="relative bg-[#09090b] border-t border-white/[0.08]">
+    <section id="about" aria-label="About" className="relative bg-[#09090b] border-t border-white/[0.08] scroll-mt-20">
       
       {/* 200vh Scroll-Track for Word-by-Word Scroll Reveal (Mrinmoy Signature) */}
       <div ref={containerRef} className="h-[200vh] relative w-full">
-        <div className="sticky top-0 h-screen flex items-center px-6 sm:px-10 lg:px-16 max-w-7xl mx-auto overflow-hidden">
+        <div className="sticky top-0 h-screen flex items-center justify-center pt-24 sm:pt-28 pb-8 px-6 sm:px-10 lg:px-16 max-w-7xl mx-auto overflow-hidden">
           
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center w-full relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-center w-full relative">
             
             {/* Ambient Background Circular Watermark Accent */}
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[450px] h-[450px] border border-white/[0.03] rounded-full pointer-events-none -z-10" />
-            <div className="absolute right-12 top-1/2 -translate-y-1/2 w-[300px] h-[300px] border border-white/[0.02] rounded-full pointer-events-none -z-10" />
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[380px] h-[380px] border border-white/[0.03] rounded-full pointer-events-none -z-10" />
+            <div className="absolute right-10 top-1/2 -translate-y-1/2 w-[240px] h-[240px] border border-white/[0.02] rounded-full pointer-events-none -z-10" />
 
             {/* Left Column: Portrait Card */}
-            <div className="hidden lg:block lg:col-span-5 h-[460px] xl:h-[500px] rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 shadow-2xl relative group">
+            <div className="hidden lg:block lg:col-span-5 h-[360px] xl:h-[420px] rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 shadow-2xl relative group max-w-[340px] xl:max-w-[380px]">
               <img
                 src={PERSONAL_INFO.avatarUrl}
                 alt={PERSONAL_INFO.name}
@@ -66,8 +66,8 @@ export const About: React.FC = () => {
             <div className="lg:col-span-7 flex flex-col justify-center relative">
               
               {/* Phone / Mobile Portrait Header */}
-              <div className="flex items-center gap-3.5 mb-5 lg:hidden">
-                <div className="w-14 h-14 rounded-2xl overflow-hidden border border-white/20 shadow-lg shrink-0 bg-zinc-900">
+              <div className="flex items-center gap-3.5 mb-4 lg:hidden">
+                <div className="w-12 h-12 rounded-2xl overflow-hidden border border-white/20 shadow-lg shrink-0 bg-zinc-900">
                   <img
                     src={PERSONAL_INFO.avatarUrl}
                     alt={PERSONAL_INFO.name}
@@ -77,15 +77,15 @@ export const About: React.FC = () => {
                   />
                 </div>
                 <div>
-                  <h3 className="font-display font-bold text-lg text-white">
+                  <h3 className="font-display font-bold text-base text-white">
                     {PERSONAL_INFO.name}
                   </h3>
-                  <p className="text-xs font-mono text-zinc-400">Full Stack Developer</p>
+                  <p className="text-[11px] font-mono text-zinc-400">Full Stack Developer</p>
                 </div>
               </div>
 
               {/* Dynamic Word Light-Up */}
-              <h2 className="flex flex-wrap text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem] leading-[1.26] font-sans font-medium tracking-tight">
+              <h2 className="flex flex-wrap text-xl sm:text-2xl md:text-3xl lg:text-[1.85rem] xl:text-[2.1rem] leading-[1.32] lg:leading-[1.36] font-sans font-medium tracking-tight">
                 {words.map((word, i) => {
                   const start = i / words.length;
                   const end = start + 1 / words.length;

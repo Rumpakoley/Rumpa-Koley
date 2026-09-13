@@ -112,7 +112,7 @@ export const Contact: React.FC = () => {
     <section
       id="contact"
       aria-label="Contact Section"
-      className="py-24 px-6 sm:px-8 lg:px-12 max-w-7xl mx-auto border-t border-white/[0.08]"
+      className="py-24 px-6 sm:px-8 lg:px-12 max-w-7xl mx-auto border-t border-white/[0.08] scroll-mt-20"
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-start">
         

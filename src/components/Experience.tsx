@@ -8,7 +8,7 @@ export const Experience: React.FC = () => {
     <section
       id="experience"
       aria-label="Work Experience"
-      className="py-24 px-6 sm:px-8 lg:px-12 max-w-7xl mx-auto border-t border-white/[0.08]"
+      className="py-24 px-6 sm:px-8 lg:px-12 max-w-7xl mx-auto border-t border-white/[0.08] scroll-mt-20"
     >
       {/* Header */}
       <div className="max-w-3xl mb-14">

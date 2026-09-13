@@ -13,7 +13,7 @@ export const Experience: React.FC = () => {
         
         {/* Header */}
         <div className="max-w-3xl mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 text-xs font-semibold tracking-wide uppercase mb-3">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 text-xs font-semibold tracking-wide uppercase mb-3">
             Career Experience
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
@@ -25,7 +25,7 @@ export const Experience: React.FC = () => {
         </div>
 
         {/* Structured Timeline Cards */}
-        <div className="relative pl-6 sm:pl-8 border-l-2 border-indigo-200 dark:border-indigo-900/80 space-y-10">
+        <div className="relative pl-6 sm:pl-8 border-l-2 border-amber-300 dark:border-amber-800/80 space-y-10">
           {EXPERIENCES.map((exp, index) => (
             <div
               key={exp.id}
@@ -33,10 +33,10 @@ export const Experience: React.FC = () => {
               className="relative group"
             >
               {/* Timeline Dot */}
-              <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-white dark:bg-slate-900 border-2 border-indigo-600 dark:border-indigo-400 group-hover:scale-125 transition-transform" />
+              <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-4 h-4 rounded-full bg-white dark:bg-slate-900 border-2 border-amber-500 dark:border-amber-400 group-hover:scale-125 transition-transform" />
 
               {/* Experience Card */}
-              <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:border-indigo-300 dark:hover:border-indigo-700/60 transition-all">
+              <div className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-xs hover:border-amber-400 dark:hover:border-amber-600/60 transition-all">
                 
                 {/* Role, Company, Period */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
@@ -47,7 +47,7 @@ export const Experience: React.FC = () => {
                         {exp.type}
                       </span>
                     </h3>
-                    <div className="text-indigo-600 dark:text-indigo-400 font-semibold text-sm">
+                    <div className="text-amber-600 dark:text-amber-400 font-semibold text-sm">
                       {exp.company}
                     </div>
                   </div>
@@ -80,7 +80,7 @@ export const Experience: React.FC = () => {
                         key={rIdx}
                         className="flex items-start gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300"
                       >
-                        <CheckCircle2 className="w-4 h-4 text-indigo-500 shrink-0 mt-0.5" />
+                        <CheckCircle2 className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
                         <span>{resp}</span>
                       </li>
                     ))}

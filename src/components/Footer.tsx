@@ -18,7 +18,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResumeModal }) => {
           
           {/* Logo & Identity */}
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white font-bold shadow-sm">
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-500 to-yellow-400 flex items-center justify-center text-slate-950 font-bold shadow-sm shadow-amber-500/20">
               <Code2 className="w-4 h-4" />
             </div>
             <div>
@@ -33,29 +33,29 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResumeModal }) => {
 
           {/* Quick Nav Links */}
           <div className="flex flex-wrap items-center justify-center gap-6 text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400">
-            <a href="#about" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+            <a href="#about" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">
               About
             </a>
-            <a href="#skills" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+            <a href="#skills" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">
               Skills
             </a>
-            <a href="#projects" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+            <a href="#projects" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">
               Projects
             </a>
-            <a href="#experience" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+            <a href="#experience" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">
               Experience
             </a>
-            <a href="#education" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+            <a href="#education" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">
               Education
             </a>
             <button
               type="button"
               onClick={onOpenResumeModal}
-              className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+              className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
             >
               Resume
             </button>
-            <a href="#contact" className="hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors">
+            <a href="#contact" className="hover:text-amber-600 dark:hover:text-amber-400 transition-colors">
               Contact
             </a>
           </div>
@@ -68,7 +68,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResumeModal }) => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub Profile"
-              className="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors"
+              className="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors"
             >
               <Github className="w-4 h-4" />
             </a>
@@ -78,7 +78,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResumeModal }) => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn Profile"
-              className="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors"
+              className="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors"
             >
               <Linkedin className="w-4 h-4" />
             </a>
@@ -86,7 +86,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResumeModal }) => {
               id="footer-email-link"
               href={`mailto:${PERSONAL_INFO.email}`}
               aria-label="Email Me"
-              className="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors"
+              className="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-amber-600 dark:hover:text-amber-400 hover:bg-slate-100 dark:hover:bg-slate-900 transition-colors"
             >
               <Mail className="w-4 h-4" />
             </a>

@@ -124,7 +124,7 @@ export const Contact: React.FC = () => {
         
         {/* Header */}
         <div className="max-w-3xl mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 text-xs font-semibold tracking-wide uppercase mb-3">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 text-xs font-semibold tracking-wide uppercase mb-3">
             Get In Touch
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
@@ -146,7 +146,7 @@ export const Contact: React.FC = () => {
 
               {/* Email */}
               <div className="flex items-start gap-3.5">
-                <div className="p-2.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 shrink-0">
+                <div className="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 shrink-0">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
@@ -156,7 +156,7 @@ export const Contact: React.FC = () => {
                   <a
                     id="contact-email-link"
                     href={`mailto:${PERSONAL_INFO.email}`}
-                    className="text-sm sm:text-base font-semibold text-slate-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors"
+                    className="text-sm sm:text-base font-semibold text-slate-900 dark:text-white hover:text-amber-600 dark:hover:text-amber-400 transition-colors"
                   >
                     {PERSONAL_INFO.email}
                   </a>
@@ -165,7 +165,7 @@ export const Contact: React.FC = () => {
 
               {/* Location */}
               <div className="flex items-start gap-3.5">
-                <div className="p-2.5 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 shrink-0">
+                <div className="p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 shrink-0">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
@@ -211,7 +211,7 @@ export const Contact: React.FC = () => {
                     <Github className="w-4 h-4 text-slate-700 dark:text-slate-300" />
                     GitHub Profile
                   </span>
-                  <span className="text-indigo-600 dark:text-indigo-400 font-mono">github.com/rumpakoley</span>
+                  <span className="text-amber-600 dark:text-amber-400 font-mono">github.com/rumpakoley</span>
                 </a>
 
                 <a
@@ -222,10 +222,10 @@ export const Contact: React.FC = () => {
                   className="flex items-center justify-between p-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200/70 dark:border-slate-700/60 text-slate-800 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-xs font-semibold"
                 >
                   <span className="flex items-center gap-2">
-                    <Linkedin className="w-4 h-4 text-indigo-500" />
+                    <Linkedin className="w-4 h-4 text-amber-500" />
                     LinkedIn Network
                   </span>
-                  <span className="text-indigo-600 dark:text-indigo-400 font-mono">linkedin.com/in/rumpa-koley</span>
+                  <span className="text-amber-600 dark:text-amber-400 font-mono">linkedin.com/in/rumpa-koley</span>
                 </a>
               </div>
             </div>
@@ -312,7 +312,7 @@ export const Contact: React.FC = () => {
                       className={`w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm bg-slate-50 dark:bg-slate-800/70 border ${
                         errors.name
                           ? 'border-rose-500 focus:ring-rose-500'
-                          : 'border-slate-200 dark:border-slate-700 focus:ring-indigo-500'
+                          : 'border-slate-200 dark:border-slate-700 focus:ring-amber-500'
                       } text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 transition-all`}
                     />
                     {errors.name && (
@@ -342,7 +342,7 @@ export const Contact: React.FC = () => {
                       className={`w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm bg-slate-50 dark:bg-slate-800/70 border ${
                         errors.email
                           ? 'border-rose-500 focus:ring-rose-500'
-                          : 'border-slate-200 dark:border-slate-700 focus:ring-indigo-500'
+                          : 'border-slate-200 dark:border-slate-700 focus:ring-amber-500'
                       } text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 transition-all`}
                     />
                     {errors.email && (
@@ -373,7 +373,7 @@ export const Contact: React.FC = () => {
                     className={`w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm bg-slate-50 dark:bg-slate-800/70 border ${
                       errors.subject
                         ? 'border-rose-500 focus:ring-rose-500'
-                        : 'border-slate-200 dark:border-slate-700 focus:ring-indigo-500'
+                        : 'border-slate-200 dark:border-slate-700 focus:ring-amber-500'
                     } text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 transition-all`}
                   />
                   {errors.subject && (
@@ -403,7 +403,7 @@ export const Contact: React.FC = () => {
                     className={`w-full px-4 py-2.5 rounded-xl text-xs sm:text-sm bg-slate-50 dark:bg-slate-800/70 border ${
                       errors.message
                         ? 'border-rose-500 focus:ring-rose-500'
-                        : 'border-slate-200 dark:border-slate-700 focus:ring-indigo-500'
+                        : 'border-slate-200 dark:border-slate-700 focus:ring-amber-500'
                     } text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 transition-all`}
                   />
                   {errors.message && (
@@ -419,7 +419,7 @@ export const Contact: React.FC = () => {
                   id="contact-submit-button"
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition-all shadow-md shadow-indigo-500/20 disabled:opacity-60 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                  className="w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-sm font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 dark:bg-amber-400 dark:hover:bg-amber-300 transition-all shadow-md shadow-amber-500/20 disabled:opacity-60 disabled:cursor-not-allowed focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
                 >
                   {isSubmitting ? (
                     <>

@@ -15,7 +15,7 @@ export const EducationAndAchievements: React.FC = () => {
           
           {/* Left Column: Education (7 cols) */}
           <div className="lg:col-span-6">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 text-xs font-semibold tracking-wide uppercase mb-3">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 text-xs font-semibold tracking-wide uppercase mb-3">
               Academic Background
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-8">
@@ -27,10 +27,10 @@ export const EducationAndAchievements: React.FC = () => {
                 <div
                   key={edu.id}
                   id={`education-${edu.id}`}
-                  className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 hover:border-indigo-300 dark:hover:border-indigo-700/60 transition-colors"
+                  className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 hover:border-amber-400 dark:hover:border-amber-600/60 transition-colors"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-xl bg-indigo-100 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400 shrink-0">
+                    <div className="p-3 rounded-xl bg-amber-100 dark:bg-amber-950/70 text-amber-600 dark:text-amber-400 shrink-0">
                       <GraduationCap className="w-6 h-6" />
                     </div>
 
@@ -38,7 +38,7 @@ export const EducationAndAchievements: React.FC = () => {
                       <h3 className="text-lg font-bold text-slate-900 dark:text-white">
                         {edu.degree}
                       </h3>
-                      <div className="text-sm font-semibold text-indigo-600 dark:text-indigo-400 mt-0.5">
+                      <div className="text-sm font-semibold text-amber-600 dark:text-amber-400 mt-0.5">
                         {edu.institution}
                       </div>
 
@@ -60,7 +60,7 @@ export const EducationAndAchievements: React.FC = () => {
                       <ul className="space-y-1.5 mb-4 text-xs sm:text-sm text-slate-600 dark:text-slate-300">
                         {edu.highlights.map((h, i) => (
                           <li key={i} className="flex items-start gap-2">
-                            <CheckCircle className="w-3.5 h-3.5 text-indigo-500 shrink-0 mt-0.5" />
+                            <CheckCircle className="w-3.5 h-3.5 text-amber-500 shrink-0 mt-0.5" />
                             <span>{h}</span>
                           </li>
                         ))}
@@ -92,7 +92,7 @@ export const EducationAndAchievements: React.FC = () => {
 
           {/* Right Column: Achievements & Certifications (6 cols) */}
           <div className="lg:col-span-6">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 text-xs font-semibold tracking-wide uppercase mb-3">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 text-xs font-semibold tracking-wide uppercase mb-3">
               Credentials & Honors
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-8">
@@ -104,7 +104,7 @@ export const EducationAndAchievements: React.FC = () => {
                 <div
                   key={ach.id}
                   id={`achievement-${ach.id}`}
-                  className="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 hover:border-indigo-300 dark:hover:border-indigo-700/60 transition-colors"
+                  className="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 hover:border-amber-400 dark:hover:border-amber-600/60 transition-colors"
                 >
                   <div className="flex items-start gap-3.5">
                     <div className="p-2.5 rounded-lg bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 shrink-0">
@@ -125,7 +125,7 @@ export const EducationAndAchievements: React.FC = () => {
                         </span>
                       </div>
 
-                      <div className="text-xs font-semibold text-indigo-600 dark:text-indigo-400 mb-1.5">
+                      <div className="text-xs font-semibold text-amber-600 dark:text-amber-400 mb-1.5">
                         Issued by: {ach.issuer}
                       </div>
 
@@ -138,7 +138,7 @@ export const EducationAndAchievements: React.FC = () => {
                           href={ach.credentialUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline"
+                          className="inline-flex items-center gap-1 text-xs font-semibold text-amber-600 dark:text-amber-400 hover:underline"
                         >
                           <span>Verify Credential</span>
                           <ExternalLink className="w-3 h-3" />

@@ -48,7 +48,7 @@ export const ProjectCaseStudyModal: React.FC<ProjectCaseStudyModalProps> = ({
         {/* Header Bar */}
         <div className="sticky top-0 z-20 flex items-center justify-between px-6 py-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-1 rounded-md text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300">
+            <span className="px-2.5 py-1 rounded-md text-xs font-semibold bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300">
               {project.category}
             </span>
             <span className="text-xs font-mono text-slate-400">Technical Case Study</span>
@@ -59,7 +59,7 @@ export const ProjectCaseStudyModal: React.FC<ProjectCaseStudyModalProps> = ({
             type="button"
             onClick={onClose}
             aria-label="Close case study modal"
-            className="p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="p-2 rounded-xl text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500"
           >
             <X className="w-5 h-5" />
           </button>
@@ -85,7 +85,7 @@ export const ProjectCaseStudyModal: React.FC<ProjectCaseStudyModalProps> = ({
                   href={project.liveDemoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 transition-colors shadow-sm"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 transition-colors shadow-sm"
                 >
                   <ExternalLink className="w-4 h-4" />
                   <span>Launch Live Demo</span>
@@ -130,10 +130,10 @@ export const ProjectCaseStudyModal: React.FC<ProjectCaseStudyModalProps> = ({
 
           {/* Key Metrics If available */}
           {caseStudy.metrics && caseStudy.metrics.length > 0 && (
-            <div className="grid grid-cols-3 gap-3 p-4 rounded-xl bg-indigo-50/60 dark:bg-indigo-950/40 border border-indigo-100 dark:border-indigo-900/50 text-center">
+            <div className="grid grid-cols-3 gap-3 p-4 rounded-xl bg-amber-50/60 dark:bg-amber-950/40 border border-amber-100 dark:border-amber-900/50 text-center">
               {caseStudy.metrics.map((m, idx) => (
                 <div key={idx}>
-                  <div className="text-xl sm:text-2xl font-black text-indigo-600 dark:text-indigo-400">
+                  <div className="text-xl sm:text-2xl font-black text-amber-600 dark:text-amber-400">
                     {m.value}
                   </div>
                   <div className="text-xs font-medium text-slate-600 dark:text-slate-400">
@@ -170,7 +170,7 @@ export const ProjectCaseStudyModal: React.FC<ProjectCaseStudyModalProps> = ({
           {/* Key Features */}
           <div className="space-y-3">
             <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <Layers className="w-4 h-4 text-indigo-500" />
+              <Layers className="w-4 h-4 text-amber-500" />
               Key Features & Architectural Capabilities
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -179,7 +179,7 @@ export const ProjectCaseStudyModal: React.FC<ProjectCaseStudyModalProps> = ({
                   key={idx}
                   className="flex items-start gap-2.5 p-3.5 rounded-lg bg-slate-50/80 dark:bg-slate-800/30 border border-slate-200/60 dark:border-slate-800"
                 >
-                  <CheckCircle className="w-4 h-4 text-indigo-500 shrink-0 mt-0.5" />
+                  <CheckCircle className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
                   <span className="text-xs sm:text-sm text-slate-700 dark:text-slate-300">{feat}</span>
                 </div>
               ))}
@@ -189,7 +189,7 @@ export const ProjectCaseStudyModal: React.FC<ProjectCaseStudyModalProps> = ({
           {/* Technical Architecture & Approach */}
           <div className="space-y-3">
             <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <Cpu className="w-4 h-4 text-indigo-500" />
+              <Cpu className="w-4 h-4 text-amber-500" />
               Technical Architecture & Stack Implementation
             </h3>
             <div className="p-4 rounded-xl bg-slate-900 text-slate-200 dark:bg-slate-950 font-mono text-xs leading-relaxed border border-slate-800">
@@ -200,7 +200,7 @@ export const ProjectCaseStudyModal: React.FC<ProjectCaseStudyModalProps> = ({
           {/* Developer Contributions */}
           <div className="space-y-3">
             <h3 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <Award className="w-4 h-4 text-indigo-500" />
+              <Award className="w-4 h-4 text-amber-500" />
               My Direct Engineering Contributions
             </h3>
             <ul className="space-y-2">
@@ -209,7 +209,7 @@ export const ProjectCaseStudyModal: React.FC<ProjectCaseStudyModalProps> = ({
                   key={idx}
                   className="flex items-start gap-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300"
                 >
-                  <span className="text-indigo-500 font-bold select-none">•</span>
+                  <span className="text-amber-500 font-bold select-none">•</span>
                   <span>{item}</span>
                 </li>
               ))}

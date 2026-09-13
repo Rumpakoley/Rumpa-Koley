@@ -28,7 +28,7 @@ export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 text-xs font-semibold tracking-wide uppercase mb-3">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 text-xs font-semibold tracking-wide uppercase mb-3">
               Portfolio Showcase
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
@@ -47,9 +47,9 @@ export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
                 id={`project-filter-${cat.toLowerCase().replace(/[^a-z0-9]/g, '-')}`}
                 type="button"
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 whitespace-nowrap ${
+                className={`px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 whitespace-nowrap ${
                   selectedCategory === cat
-                    ? 'bg-indigo-600 text-white shadow-xs font-semibold'
+                    ? 'bg-amber-400 text-slate-950 font-bold shadow-xs'
                     : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
                 }`}
               >
@@ -65,7 +65,7 @@ export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
             <article
               key={project.id}
               id={`project-card-${project.id}`}
-              className="flex flex-col rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl hover:border-indigo-300 dark:hover:border-indigo-700/60 transition-all duration-300 group"
+              className="flex flex-col rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-xl hover:border-amber-400 dark:hover:border-amber-600/60 transition-all duration-300 group"
             >
               {/* Project Image Preview & Category Badge */}
               <div className="relative aspect-[16/10] overflow-hidden bg-slate-100 dark:bg-slate-950">
@@ -83,7 +83,7 @@ export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
                     {project.category}
                   </span>
                   {project.featured && (
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-amber-500/90 text-white backdrop-blur-md">
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-amber-500/90 text-slate-950 backdrop-blur-md">
                       <Sparkles className="w-3 h-3" /> Featured
                     </span>
                   )}
@@ -101,7 +101,7 @@ export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
                         aria-label={`Open live demo for ${project.title}`}
                         className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-[11px] font-semibold bg-white/95 text-slate-900 hover:bg-white transition-colors shadow-xs"
                       >
-                        <ExternalLink className="w-3 h-3 text-indigo-600" />
+                        <ExternalLink className="w-3 h-3 text-amber-600" />
                         Live Demo
                       </a>
                     )}
@@ -125,7 +125,7 @@ export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
               {/* Card Body */}
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors mb-2">
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors mb-2">
                     {project.title}
                   </h3>
 
@@ -157,7 +157,7 @@ export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
                     id={`open-case-study-${project.id}`}
                     type="button"
                     onClick={() => onSelectProject(project)}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 group-hover:translate-x-1 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded p-1"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 dark:text-amber-400 hover:text-amber-700 dark:hover:text-amber-300 group-hover:translate-x-1 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 rounded p-1"
                   >
                     <BookOpen className="w-3.5 h-3.5" />
                     <span>View Full Case Study</span>

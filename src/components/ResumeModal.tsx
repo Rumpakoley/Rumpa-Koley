@@ -68,7 +68,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               id="resume-download-btn"
               href="/api/resume/download"
               download="Rumpa_Koley_Full_Stack_Developer_Resume.txt"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold text-white bg-indigo-600 hover:bg-indigo-700 transition-colors shadow-xs"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold text-slate-950 bg-amber-400 hover:bg-amber-300 transition-colors shadow-xs"
             >
               <Download className="w-3.5 h-3.5" />
               <span>Download Resume</span>
@@ -87,7 +87,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
         </div>
 
         {/* Printable & Scrollable ATS-Friendly Document View */}
-        <div className="flex-1 overflow-y-auto p-6 sm:p-10 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 selection:bg-indigo-500 selection:text-white">
+        <div className="flex-1 overflow-y-auto p-6 sm:p-10 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 selection:bg-amber-500 selection:text-slate-950">
           <div className="max-w-3xl mx-auto space-y-6">
             
             {/* Header / Identity */}
@@ -96,7 +96,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                 <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 dark:text-white uppercase">
                   {PERSONAL_INFO.name}
                 </h1>
-                <div className="text-base font-bold text-indigo-600 dark:text-indigo-400 mt-0.5">
+                <div className="text-base font-bold text-amber-600 dark:text-amber-400 mt-0.5">
                   {PERSONAL_INFO.role}
                 </div>
               </div>
@@ -104,7 +104,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
               <div className="mt-3 sm:mt-0 text-xs text-slate-500 dark:text-slate-400 space-y-1 sm:text-right font-mono">
                 <div>{PERSONAL_INFO.email}</div>
                 <div>{PERSONAL_INFO.location}</div>
-                <div className="flex sm:justify-end gap-3 text-indigo-600 dark:text-indigo-400">
+                <div className="flex sm:justify-end gap-3 text-amber-600 dark:text-amber-400">
                   <a href={PERSONAL_INFO.github} target="_blank" rel="noreferrer" className="hover:underline">GitHub</a>
                   <span>•</span>
                   <a href={PERSONAL_INFO.linkedin} target="_blank" rel="noreferrer" className="hover:underline">LinkedIn</a>
@@ -146,7 +146,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => 
                   <div key={exp.id} className="text-xs sm:text-sm">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between font-bold text-slate-900 dark:text-white">
                       <div>
-                        <span>{exp.role}</span> — <span className="text-indigo-600 dark:text-indigo-400 font-semibold">{exp.company}</span>
+                        <span>{exp.role}</span> — <span className="text-amber-600 dark:text-amber-400 font-semibold">{exp.company}</span>
                       </div>
                       <span className="text-xs font-normal text-slate-500 dark:text-slate-400 font-mono">
                         {exp.period} | {exp.location}

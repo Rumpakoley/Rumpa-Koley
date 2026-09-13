@@ -32,7 +32,7 @@ export const About: React.FC = () => {
         
         {/* Section Header */}
         <div className="max-w-3xl mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-indigo-50 dark:bg-indigo-950/50 text-indigo-600 dark:text-indigo-400 text-xs font-semibold tracking-wide uppercase mb-3">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-amber-50 dark:bg-amber-950/50 text-amber-600 dark:text-amber-400 text-xs font-semibold tracking-wide uppercase mb-3">
             About Me
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
@@ -57,7 +57,7 @@ export const About: React.FC = () => {
 
             {/* Quick Quote / Personal Principle */}
             <div className="pt-2">
-              <blockquote className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border-l-4 border-indigo-500 text-sm italic text-slate-700 dark:text-slate-300">
+              <blockquote className="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/60 border-l-4 border-amber-500 text-sm italic text-slate-700 dark:text-slate-300">
                 "Great software is not just about writing code that machines can execute; it's about building systems that humans can maintain, scale, and love using."
               </blockquote>
             </div>
@@ -71,9 +71,9 @@ export const About: React.FC = () => {
                 <div
                   key={idx}
                   id={`about-pillar-${idx}`}
-                  className="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/70 dark:border-slate-800 hover:border-indigo-300 dark:hover:border-indigo-700/60 transition-colors"
+                  className="p-5 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/70 dark:border-slate-800 hover:border-amber-400 dark:hover:border-amber-600/60 transition-colors"
                 >
-                  <div className="w-9 h-9 rounded-lg bg-indigo-100 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400 flex items-center justify-center mb-3">
+                  <div className="w-9 h-9 rounded-lg bg-amber-100 dark:bg-amber-950/70 text-amber-600 dark:text-amber-400 flex items-center justify-center mb-3">
                     <Icon className="w-5 h-5" />
                   </div>
                   <h3 className="font-semibold text-slate-900 dark:text-white text-base mb-1.5">

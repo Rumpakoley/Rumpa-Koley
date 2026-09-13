@@ -1,85 +1,114 @@
-import React from 'react';
-import { motion } from 'motion/react';
-import { ArrowDown, Code2, Server, Database, Cpu, ShieldCheck, Sparkles, Zap, Layers } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, MotionValue } from 'motion/react';
+import { Layers, Server, ShieldCheck } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
-export const About: React.FC = () => {
-  return (
-    <section id="about" aria-label="About and Philosophy" className="py-24 sm:py-32 px-6 sm:px-8 lg:px-12 max-w-7xl mx-auto border-t border-white/[0.08] relative z-10">
-      
-      {/* Top Manifesto & Portrait Showcase */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center mb-24">
-        
-        {/* Desktop Left Column: Visual Portrait Graphic */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="hidden lg:block lg:col-span-4 rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 relative group shadow-2xl h-[420px]"
-        >
-          {/* Clean Portrait Image */}
-          <img
-            src={PERSONAL_INFO.avatarUrl}
-            alt={PERSONAL_INFO.name}
-            loading="eager"
-            decoding="async"
-            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
-          />
-        </motion.div>
+interface WordProps {
+  word: string;
+  range: [number, number];
+  progress: MotionValue<number>;
+}
 
-        {/* Right Column: Manifesto Statement */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-8 flex flex-col justify-center"
-        >
-          {/* Phone / Mobile Portrait Header */}
-          <div className="flex items-center gap-4 mb-6 lg:hidden">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden border border-amber-400/40 shadow-xl shrink-0 bg-zinc-900">
+const Word: React.FC<WordProps> = ({ word, range, progress }) => {
+  const opacity = useTransform(progress, range, [0.12, 1]);
+  const color = useTransform(progress, range, ['#27272a', '#ffffff']);
+
+  return (
+    <motion.span
+      style={{ opacity, color }}
+      className="mr-[0.28em] my-[0.05em] inline-block select-none"
+    >
+      {word}
+    </motion.span>
+  );
+};
+
+export const About: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Exact statement modeled after Mrinmoy's cinematic structure
+  const manifestoText =
+    "Rumpa is an India-based full-stack developer, software engineer, and systems architect. Specializing in TypeScript, modern React architectures, and distributed backend services, she brings a clean, high-performance visual signature to her applications. Driven by the belief that clean code and systematic design can empower millions, she handles both frontend fidelity and database scalability, constantly refining her craft with every new system she builds.";
+
+  const words = manifestoText.split(' ');
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start start', 'end end'],
+  });
+
+  return (
+    <section id="about" aria-label="About" className="relative bg-[#09090b] border-t border-white/[0.08]">
+      
+      {/* 200vh Scroll-Track for Word-by-Word Scroll Reveal (Mrinmoy Signature) */}
+      <div ref={containerRef} className="h-[200vh] relative w-full">
+        <div className="sticky top-0 h-screen flex items-center px-6 sm:px-10 lg:px-16 max-w-7xl mx-auto overflow-hidden">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center w-full relative">
+            
+            {/* Ambient Background Circular Watermark Accent */}
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[450px] h-[450px] border border-white/[0.03] rounded-full pointer-events-none -z-10" />
+            <div className="absolute right-12 top-1/2 -translate-y-1/2 w-[300px] h-[300px] border border-white/[0.02] rounded-full pointer-events-none -z-10" />
+
+            {/* Left Column: Portrait Card */}
+            <div className="hidden lg:block lg:col-span-5 h-[460px] xl:h-[500px] rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 shadow-2xl relative group">
               <img
                 src={PERSONAL_INFO.avatarUrl}
                 alt={PERSONAL_INFO.name}
                 loading="eager"
                 decoding="async"
-                className="w-full h-full object-cover object-center"
+                className="w-full h-full object-cover object-center filter grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
             </div>
-            <div>
-              <div className="font-mono text-[10px] tracking-widest uppercase text-amber-400 flex items-center gap-1.5 mb-1">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>Engineering Manifesto</span>
+
+            {/* Right Column: Scroll-Illuminated Words */}
+            <div className="lg:col-span-7 flex flex-col justify-center relative">
+              
+              {/* Phone / Mobile Portrait Header */}
+              <div className="flex items-center gap-3.5 mb-5 lg:hidden">
+                <div className="w-14 h-14 rounded-2xl overflow-hidden border border-white/20 shadow-lg shrink-0 bg-zinc-900">
+                  <img
+                    src={PERSONAL_INFO.avatarUrl}
+                    alt={PERSONAL_INFO.name}
+                    loading="eager"
+                    decoding="async"
+                    className="w-full h-full object-cover object-center grayscale"
+                  />
+                </div>
+                <div>
+                  <h3 className="font-display font-bold text-lg text-white">
+                    {PERSONAL_INFO.name}
+                  </h3>
+                  <p className="text-xs font-mono text-zinc-400">Full Stack Developer</p>
+                </div>
               </div>
-              <h3 className="font-display font-bold text-xl text-zinc-100">
-                {PERSONAL_INFO.name}
-              </h3>
-              <p className="text-xs font-mono text-zinc-400">Full Stack Developer & Systems Designer</p>
+
+              {/* Dynamic Word Light-Up */}
+              <h2 className="flex flex-wrap text-2xl sm:text-3xl md:text-4xl lg:text-[2.6rem] leading-[1.26] font-sans font-medium tracking-tight">
+                {words.map((word, i) => {
+                  const start = i / words.length;
+                  const end = start + 1 / words.length;
+                  return (
+                    <Word
+                      key={i}
+                      word={word}
+                      range={[start, end]}
+                      progress={scrollYProgress}
+                    />
+                  );
+                })}
+              </h2>
+
             </div>
+
           </div>
 
-          {/* Desktop Section Tag */}
-          <div className="hidden lg:flex font-mono text-[11px] tracking-widest uppercase text-amber-400 mb-6 items-center gap-2">
-            <span className="w-6 h-[1px] bg-amber-400" />
-            <span>Engineering Manifesto</span>
-          </div>
-
-          {/* Core Statement with Luxury Typography */}
-          <p className="text-xl sm:text-2xl md:text-3xl lg:text-[2.2rem] leading-[1.45] font-sans font-light text-zinc-300 tracking-tight">
-            Rumpa is a <strong className="text-white font-semibold">full-stack developer</strong> and software engineer with a deep passion for building <span className="text-amber-400 font-medium underline underline-offset-8 decoration-amber-400/30">resilient, high-performance web systems</span>. Specializing in <strong className="text-white font-semibold">TypeScript</strong>, modern <strong className="text-white font-semibold">React architectures</strong>, and distributed backend services, she brings an architectural precision and user-first visual signature to every application. Driven by clean code and systematic design, she handles both frontend fidelity and database scalability, constantly engineering digital experiences that humans can trust and love using.
-          </p>
-
-          <div className="mt-8 flex items-center gap-6 font-mono text-xs text-zinc-400 uppercase tracking-widest">
-            <span className="text-amber-400 font-bold">// Core Focus:</span>
-            <span>Scalability • Type Safety • Performance</span>
-          </div>
-        </motion.div>
-
+        </div>
       </div>
 
       {/* 3-Column Domain Expertise Grid */}
-      <div className="border-t border-white/[0.08] pt-20">
+      <div className="border-t border-white/[0.08] px-6 sm:px-10 lg:px-16 py-24 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
           
           {/* Column 1: Core Architecture */}

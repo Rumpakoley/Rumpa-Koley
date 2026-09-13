@@ -59,30 +59,12 @@ export const About: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-black/30 pointer-events-none" />
 
               {/* Content Overlaid on Card */}
-              <div className="absolute inset-0 p-6 flex flex-col justify-between">
+              <div className="absolute inset-0 p-6 flex flex-col justify-between pointer-events-none">
                 {/* Top Bar */}
                 <div className="flex items-center justify-between font-mono text-[11px] tracking-widest uppercase text-zinc-300">
                   <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15">Manifesto</span>
                   <div className="w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-white/15 flex items-center justify-center text-amber-400">
                     <Sparkles className="w-4 h-4" />
-                  </div>
-                </div>
-
-                {/* Bottom Identity & Status */}
-                <div className="space-y-3">
-                  <div className="p-4 rounded-2xl bg-zinc-950/85 backdrop-blur-md border border-white/10 space-y-1.5">
-                    <div className="flex items-center justify-between">
-                      <h4 className="text-lg font-display font-bold text-white tracking-wide">
-                        {PERSONAL_INFO.name}
-                      </h4>
-                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                        Live
-                      </span>
-                    </div>
-                    <p className="text-[11px] text-zinc-400 font-mono leading-relaxed">
-                      Full Stack Developer & Systems Designer • Kolkata, India
-                    </p>
                   </div>
                 </div>
               </div>

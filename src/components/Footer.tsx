@@ -76,42 +76,23 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResumeModal }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-wrap items-center text-[11.5vw] sm:text-[9.5vw] lg:text-[7.8vw] leading-[0.82] font-display font-black tracking-tighter uppercase origin-bottom-left gap-x-2 sm:gap-x-4"
+            className="flex items-center text-[17vw] sm:text-[14vw] lg:text-[11.5vw] leading-[0.78] font-display font-black tracking-tighter uppercase origin-bottom-left"
           >
-            <div className="flex items-center">
-              {['R', 'U', 'M', 'P', 'A'].map((letter, index) => (
-                <motion.span
-                  key={`r-${index}`}
-                  whileHover={{
-                    y: -14,
-                    scale: 1.08,
-                    rotate: index % 2 === 0 ? -1.5 : 1.5,
-                    transition: { type: 'spring', stiffness: 350, damping: 15 },
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  className="watermark-letter font-black select-none inline-block px-[0.015em]"
-                >
-                  {letter}
-                </motion.span>
-              ))}
-            </div>
-            <div className="flex items-center">
-              {['K', 'O', 'L', 'E', 'Y'].map((letter, index) => (
-                <motion.span
-                  key={`k-${index}`}
-                  whileHover={{
-                    y: -14,
-                    scale: 1.08,
-                    rotate: index % 2 === 0 ? -1.5 : 1.5,
-                    transition: { type: 'spring', stiffness: 350, damping: 15 },
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  className="watermark-letter font-black select-none inline-block px-[0.015em]"
-                >
-                  {letter}
-                </motion.span>
-              ))}
-            </div>
+            {['R', 'U', 'M', 'P', 'A'].map((letter, index) => (
+              <motion.span
+                key={index}
+                whileHover={{
+                  y: -14,
+                  scale: 1.08,
+                  rotate: index % 2 === 0 ? -1.5 : 1.5,
+                  transition: { type: 'spring', stiffness: 350, damping: 15 },
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="watermark-letter font-black select-none inline-block px-[0.02em]"
+              >
+                {letter}
+              </motion.span>
+            ))}
           </motion.div>
         </div>
 

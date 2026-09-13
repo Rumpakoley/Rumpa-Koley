@@ -15,12 +15,12 @@ export const About: React.FC = () => {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ['start start', 'end end'],
+    offset: ['start 65%', 'end end'],
   });
 
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-    // Reaches 100% complete illumination by 80% scroll so the entire bio stays fully highlighted
-    const progress = Math.min(latest / 0.82, 1);
+    // Reaches 100% complete illumination by 75% scroll so the entire bio stays fully highlighted
+    const progress = Math.min(latest / 0.75, 1);
     setActiveWordIndex(Math.floor(progress * (words.length + 1)));
   });
 
@@ -29,7 +29,7 @@ export const About: React.FC = () => {
 
       {/* Scroll-Track for Word-by-Word Scroll Reveal */}
       <div ref={containerRef} className="h-[170vh] sm:h-[190vh] lg:h-[220vh] relative w-full z-10">
-        <div className="sticky top-0 lg:h-screen flex flex-col justify-start lg:justify-center pt-20 pb-6 sm:pt-24 sm:pb-8 lg:py-12 px-6 sm:px-10 lg:px-16 max-w-7xl mx-auto">
+        <div className="sticky top-0 lg:h-screen flex flex-col justify-start lg:justify-center pt-20 pb-6 sm:pt-24 sm:pb-8 lg:pt-28 lg:pb-12 px-6 sm:px-10 lg:px-16 max-w-7xl mx-auto">
           
           {/* Top subtle progress bar */}
           <motion.div
@@ -45,7 +45,7 @@ export const About: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="hidden lg:block lg:col-span-5 aspect-[4/5] max-h-[420px] xl:max-h-[480px] rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 shadow-2xl relative group"
+              className="hidden lg:block lg:col-span-5 aspect-[4/5] max-h-[390px] xl:max-h-[440px] rounded-3xl overflow-hidden bg-zinc-900 border border-white/10 shadow-2xl relative group"
             >
               <img
                 src={PERSONAL_INFO.avatarUrl}
@@ -77,7 +77,7 @@ export const About: React.FC = () => {
               </div>
 
               {/* Dynamic Word Light-Up with Full Bio Illumination */}
-              <h3 className="flex flex-wrap text-[1.48rem] sm:text-[1.7rem] md:text-[1.85rem] lg:text-[1.8rem] xl:text-[2.05rem] 2xl:text-[2.25rem] leading-[1.32] sm:leading-[1.34] lg:leading-[1.38] font-space font-medium tracking-tight text-white">
+              <h3 className="flex flex-wrap text-[1.48rem] sm:text-[1.7rem] md:text-[1.85rem] lg:text-[1.65rem] xl:text-[1.85rem] 2xl:text-[2.05rem] leading-[1.32] sm:leading-[1.34] lg:leading-[1.38] font-space font-medium tracking-tight text-white">
                 {words.map((word, i) => (
                   <motion.span
                     key={i}

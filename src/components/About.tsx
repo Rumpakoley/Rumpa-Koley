@@ -65,7 +65,7 @@ export const About: React.FC = () => {
                 <span className="font-mono text-[10px] tracking-widest uppercase text-zinc-500">
                   About
                 </span>
-                <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-3xl overflow-hidden relative bg-zinc-900 border border-white/15 shadow-2xl shrink-0">
+                <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-3xl overflow-hidden relative bg-zinc-900 border border-white/15 shadow-2xl shrink-0">
                   <img
                     src={PERSONAL_INFO.avatarUrl}
                     alt={PERSONAL_INFO.name}
@@ -77,7 +77,7 @@ export const About: React.FC = () => {
               </div>
 
               {/* Dynamic Word Light-Up with Full Bio Illumination */}
-              <h3 className="flex flex-wrap text-[1.05rem] sm:text-xl md:text-2xl lg:text-[1.55rem] xl:text-[1.78rem] 2xl:text-[1.95rem] leading-[1.38] sm:leading-[1.4] lg:leading-[1.42] font-space font-medium tracking-tight text-white">
+              <h3 className="flex flex-wrap text-[1.32rem] sm:text-[1.5rem] md:text-2xl lg:text-[1.65rem] xl:text-[1.85rem] 2xl:text-[2rem] leading-[1.32] sm:leading-[1.35] lg:leading-[1.4] font-space font-medium tracking-tight text-white">
                 {words.map((word, i) => (
                   <motion.span
                     key={i}
@@ -86,7 +86,7 @@ export const About: React.FC = () => {
                       y: i < activeWordIndex ? 0 : 6,
                     }}
                     transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                    className="mr-[0.28em] my-[0.06em] inline-block"
+                    className="mr-[0.26em] my-[0.05em] inline-block"
                   >
                     {word}
                   </motion.span>
@@ -97,7 +97,7 @@ export const About: React.FC = () => {
               <motion.div
                 animate={{ opacity: activeWordIndex >= words.length ? 0 : 0.6 }}
                 transition={{ duration: 0.4 }}
-                className="flex items-center gap-2 mt-4 font-mono text-[10px] tracking-widest uppercase text-zinc-400"
+                className="flex items-center gap-2 mt-5 font-mono text-[10px] tracking-widest uppercase text-zinc-400"
               >
                 <motion.span
                   animate={{ y: [0, 5, 0] }}

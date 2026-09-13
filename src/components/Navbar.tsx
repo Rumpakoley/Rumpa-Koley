@@ -67,13 +67,16 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header
       id="main-navbar"
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'bg-[#09090b]/80 backdrop-blur-xl border-b border-white/[0.08] py-4 shadow-2xl'
-          : 'bg-transparent py-6'
-      }`}
+      className="fixed top-3 sm:top-5 left-0 right-0 z-50 flex flex-col items-center px-4 sm:px-6 pointer-events-none transition-all duration-300"
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+      {/* Floating Pill Island */}
+      <div
+        className={`pointer-events-auto w-full max-w-5xl rounded-full transition-all duration-500 border shadow-2xl backdrop-blur-2xl ${
+          isScrolled
+            ? 'bg-zinc-950/90 border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.85),0_0_25px_rgba(245,158,11,0.08)] py-2.5 px-4 sm:px-6'
+            : 'bg-zinc-950/75 border-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.6)] py-3 px-5 sm:px-7'
+        }`}
+      >
         <div className="flex items-center justify-between">
           
           {/* Minimalist Monospace Brand Metadata */}
@@ -81,10 +84,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             href="#hero"
             id="brand-logo-link"
             onClick={(e) => handleLinkClick(e, '#hero')}
-            className="group flex items-center gap-3 focus:outline-none"
+            className="group flex items-center gap-2.5 focus:outline-none"
           >
-            <div className="w-8 h-8 rounded-lg bg-zinc-900 border border-white/10 flex items-center justify-center text-amber-400 group-hover:border-amber-400/50 group-hover:scale-105 transition-all">
-              <Terminal className="w-4 h-4" />
+            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-zinc-900 border border-white/10 flex items-center justify-center text-amber-400 group-hover:border-amber-400/50 group-hover:scale-105 transition-all shadow-inner">
+              <Terminal className="w-3.5 h-3.5" />
             </div>
             <div className="font-mono text-[11px] tracking-widest uppercase leading-tight">
               <span className="text-zinc-100 font-bold tracking-tight block">Rumpa Koley</span>
@@ -93,7 +96,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </a>
 
           {/* Desktop Navigation */}
-          <nav id="desktop-nav" aria-label="Main Navigation" className="hidden md:flex items-center gap-8 font-mono text-[11px] tracking-widest uppercase">
+          <nav id="desktop-nav" aria-label="Main Navigation" className="hidden md:flex items-center gap-6 lg:gap-8 font-mono text-[11px] tracking-widest uppercase">
             {navLinks.map((link) => {
               const isActive = activeSection === link.href.replace('#', '');
               return (
@@ -102,7 +105,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   id={`nav-link-${link.label.toLowerCase()}`}
                   href={link.href}
                   onClick={(e) => handleLinkClick(e, link.href)}
-                  className={`transition-all duration-300 relative py-1 ${
+                  className={`transition-all duration-300 relative py-1 px-1 ${
                     isActive
                       ? 'text-amber-400 font-semibold opacity-100'
                       : 'text-zinc-400 hover:text-zinc-100 opacity-70 hover:opacity-100'
@@ -111,7 +114,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <span className="opacity-40 mr-1 text-[9px]">[{link.num}]</span>
                   {link.label}
                   {isActive && (
-                    <span className="absolute -bottom-1 left-0 right-0 h-[1.5px] bg-amber-400 rounded-full" />
+                    <motion.span
+                      layoutId="activeNavIndicator"
+                      className="absolute -bottom-0.5 left-0 right-0 h-[1.5px] bg-amber-400 rounded-full"
+                    />
                   )}
                 </a>
               );
@@ -119,12 +125,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
 
           {/* Right Action Controls */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden md:flex items-center gap-3">
             <button
               id="nav-resume-button"
               type="button"
               onClick={onOpenResumeModal}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-mono text-[11px] tracking-widest uppercase text-zinc-300 bg-zinc-900/80 hover:bg-zinc-850 hover:text-white border border-white/10 hover:border-amber-400/50 transition-all shadow-sm"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full font-mono text-[11px] tracking-widest uppercase text-zinc-300 bg-zinc-900/80 hover:bg-zinc-800 hover:text-white border border-white/10 hover:border-amber-400/50 transition-all shadow-sm"
             >
               <FileText className="w-3.5 h-3.5 text-amber-400" />
               <span>Resume</span>
@@ -134,7 +140,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               id="nav-contact-cta"
               href="#contact"
               onClick={(e) => handleLinkClick(e, '#contact')}
-              className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full font-mono text-[11px] tracking-widest uppercase font-bold text-zinc-950 bg-amber-400 hover:bg-amber-300 transition-all shadow-lg shadow-amber-500/20 hover:shadow-amber-500/30 hover:scale-[1.02]"
+              className="inline-flex items-center gap-1.5 px-4.5 py-1.5 rounded-full font-mono text-[11px] tracking-widest uppercase font-bold text-zinc-950 bg-amber-400 hover:bg-amber-300 transition-all shadow-md shadow-amber-500/20 hover:shadow-amber-500/30 hover:scale-[1.02]"
             >
               <span>Let's Talk</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
@@ -149,7 +155,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-expanded={mobileMenuOpen}
               aria-label="Toggle navigation menu"
-              className="p-2 rounded-xl text-zinc-300 bg-zinc-900 border border-white/10 hover:border-white/20"
+              className="p-1.5 rounded-full text-zinc-300 bg-zinc-900 border border-white/10 hover:border-white/20"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -157,20 +163,20 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Floating Mobile Drawer */}
       {mobileMenuOpen && (
         <div
           id="mobile-menu-drawer"
-          className="md:hidden bg-[#09090b]/95 backdrop-blur-2xl border-b border-white/10 px-6 pt-4 pb-8 shadow-2xl animate-in slide-in-from-top-2 duration-300"
+          className="pointer-events-auto md:hidden w-full max-w-sm mt-3 bg-zinc-950/95 backdrop-blur-2xl border border-white/15 rounded-3xl p-5 shadow-2xl animate-in slide-in-from-top-3 duration-300"
         >
-          <div className="flex flex-col gap-2 mb-6 font-mono text-xs tracking-widest uppercase">
+          <div className="flex flex-col gap-1.5 mb-5 font-mono text-xs tracking-widest uppercase">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 id={`mobile-nav-${link.label.toLowerCase()}`}
                 href={link.href}
                 onClick={(e) => handleLinkClick(e, link.href)}
-                className="px-4 py-3 rounded-xl text-zinc-300 hover:text-white hover:bg-zinc-900 border border-transparent hover:border-white/5 transition-colors"
+                className="px-4 py-2.5 rounded-xl text-zinc-300 hover:text-white hover:bg-zinc-900 border border-transparent hover:border-white/5 transition-colors"
               >
                 <span className="opacity-40 mr-2 text-[10px]">[{link.num}]</span>
                 {link.label}
@@ -178,7 +184,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             ))}
           </div>
 
-          <div className="flex flex-col gap-3 pt-4 border-t border-white/10">
+          <div className="flex flex-col gap-2.5 pt-4 border-t border-white/10">
             <button
               id="mobile-resume-button"
               type="button"
@@ -186,7 +192,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 setMobileMenuOpen(false);
                 onOpenResumeModal();
               }}
-              className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-mono text-xs tracking-widest uppercase text-zinc-200 bg-zinc-900 hover:bg-zinc-800 border border-white/10 transition-colors"
+              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-mono text-xs tracking-widest uppercase text-zinc-200 bg-zinc-900 hover:bg-zinc-800 border border-white/10 transition-colors"
             >
               <FileText className="w-4 h-4 text-amber-400" />
               View & Download Resume
@@ -195,7 +201,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               id="mobile-contact-cta"
               href="#contact"
               onClick={(e) => handleLinkClick(e, '#contact')}
-              className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-mono text-xs tracking-widest uppercase font-bold text-zinc-950 bg-amber-400 hover:bg-amber-300 transition-colors shadow-md shadow-amber-500/20"
+              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-mono text-xs tracking-widest uppercase font-bold text-zinc-950 bg-amber-400 hover:bg-amber-300 transition-colors shadow-md shadow-amber-500/20"
             >
               Contact Directly
               <ArrowUpRight className="w-4 h-4" />

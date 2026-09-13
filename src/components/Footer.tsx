@@ -76,7 +76,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResumeModal }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="flex items-center text-[17vw] sm:text-[14vw] lg:text-[11.5vw] leading-[0.78] font-display font-black tracking-tighter uppercase origin-bottom-left"
+            className="flex items-center text-[13vw] sm:text-[13.5vw] lg:text-[11vw] leading-[0.82] font-display font-black tracking-tighter uppercase origin-bottom-left max-w-full"
           >
             {['R', 'U', 'M', 'P', 'A'].map((letter, index) => (
               <motion.span
@@ -88,7 +88,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenResumeModal }) => {
                   transition: { type: 'spring', stiffness: 350, damping: 15 },
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="watermark-letter font-black select-none inline-block px-[0.02em]"
+                className="watermark-letter font-black select-none inline-block px-[0.01em]"
               >
                 {letter}
               </motion.span>

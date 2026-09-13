@@ -92,6 +92,12 @@ export const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
                   decoding="async"
                   className="w-full h-full object-cover object-center grayscale contrast-105 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    const target = e.currentTarget as HTMLImageElement;
+                    if (!target.src.includes('cloudinary.com')) {
+                      target.src = 'https://res.cloudinary.com/dpdtsaalf/image/upload/w_1200,f_auto,q_auto/v1787910634/WhatsApp_Image_2026-08-27_at_9.05.33_PM_vwnozh.jpg';
+                    }
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/20 group-hover:via-black/40 transition-all duration-500" />
               </div>

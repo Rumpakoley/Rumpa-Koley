@@ -114,6 +114,12 @@ export const ProjectCaseStudyModal: React.FC<ProjectCaseStudyModalProps> = ({
               alt={`${project.title} Interface preview`}
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
+              onError={(e) => {
+                const target = e.currentTarget as HTMLImageElement;
+                if (!target.src.includes('cloudinary.com')) {
+                  target.src = 'https://res.cloudinary.com/dpdtsaalf/image/upload/w_1200,f_auto,q_auto/v1787910634/WhatsApp_Image_2026-08-27_at_9.05.33_PM_vwnozh.jpg';
+                }
+              }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
             <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-1.5">

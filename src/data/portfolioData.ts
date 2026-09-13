@@ -26,7 +26,7 @@ export const PROJECTS: Project[] = [
       'Interactive fine art exhibition platform and digital studio registry featuring virtual museum frame staging, interactive 3D wall previews, and automated collector inquiry dispatch.',
     category: 'Full Stack',
     technologies: ['React 19', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'Express', 'Vite'],
-    thumbnailUrl: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1200&q=80',
+    thumbnailUrl: '/projects/morphiq.jpg',
     liveDemoUrl: 'https://www.themorphiq.com/',
     sourceCodeUrl: 'https://github.com/rumpakoley/morphiq-studio',
     featured: true,

@@ -27,9 +27,9 @@ export const About: React.FC = () => {
   return (
     <section id="about" aria-label="About" className="relative border-t border-white/[0.08] scroll-mt-20">
 
-      {/* 220vh Scroll-Track for Word-by-Word Scroll Reveal */}
-      <div ref={containerRef} className="h-[220vh] relative w-full z-10">
-        <div className="sticky top-0 h-screen flex flex-col justify-start lg:justify-center pt-20 pb-6 sm:pt-24 sm:pb-8 lg:py-12 px-6 sm:px-10 lg:px-16 max-w-7xl mx-auto overflow-hidden">
+      {/* Scroll-Track for Word-by-Word Scroll Reveal */}
+      <div ref={containerRef} className="h-[170vh] sm:h-[190vh] lg:h-[220vh] relative w-full z-10">
+        <div className="sticky top-0 lg:h-screen flex flex-col justify-start lg:justify-center pt-20 pb-6 sm:pt-24 sm:pb-8 lg:py-12 px-6 sm:px-10 lg:px-16 max-w-7xl mx-auto">
           
           {/* Top subtle progress bar */}
           <motion.div
@@ -117,7 +117,7 @@ export const About: React.FC = () => {
       </div>
 
       {/* 3-Column Domain Expertise Grid */}
-      <div className="border-t border-white/[0.08] px-6 sm:px-10 lg:px-16 py-24 max-w-7xl mx-auto">
+      <div className="border-t border-white/[0.08] px-6 sm:px-10 lg:px-16 pt-8 pb-16 sm:pt-12 sm:pb-20 lg:py-24 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
           
           {/* Column 1: Core Architecture */}

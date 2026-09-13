@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useMotionValueEvent } from 'motion/react';
-import { Layers, Server, ShieldCheck, Aperture } from 'lucide-react';
+import { Layers, Server, ShieldCheck, Infinity as InfinityIcon } from 'lucide-react';
 import { PERSONAL_INFO } from '../data/portfolioData';
 
 export const About: React.FC = () => {
@@ -27,14 +27,14 @@ export const About: React.FC = () => {
   return (
     <section id="about" aria-label="About" className="relative bg-[#09090b] border-t border-white/[0.08] scroll-mt-20">
       
-      {/* Background Rotating Aperture (Mrinmoy Signature) */}
+      {/* Background Rotating Infinity Sign Watermark */}
       <div className="sticky top-0 h-0 overflow-visible pointer-events-none z-0">
         <motion.div
           animate={{ rotate: 360 }}
-          transition={{ duration: 120, repeat: Infinity, ease: 'linear' }}
-          className="absolute -top-10 -right-[10%] text-white/[0.02]"
+          transition={{ duration: 160, repeat: Infinity, ease: 'linear' }}
+          className="absolute -top-20 -right-[15%] text-white/[0.03]"
         >
-          <Aperture size={800} strokeWidth={0.5} />
+          <InfinityIcon size={840} strokeWidth={0.5} />
         </motion.div>
       </div>
 

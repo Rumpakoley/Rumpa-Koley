@@ -19,7 +19,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResumeModal }) => {
     <section
       id="hero"
       aria-label="Introduction"
-      className="min-h-screen relative flex flex-col justify-between pt-28 md:pt-36 pb-20 md:pb-28 px-6 sm:px-8 lg:px-12 max-w-7xl mx-auto overflow-hidden"
+      className="min-h-screen relative flex flex-col justify-between pt-24 md:pt-32 pb-8 md:pb-12 px-6 sm:px-8 lg:px-12 max-w-7xl mx-auto overflow-hidden"
     >
       {/* Background ambient lighting effects */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-amber-500/[0.04] rounded-full blur-[140px] pointer-events-none -z-10" />
@@ -210,7 +210,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResumeModal }) => {
       </div>
 
       {/* Bottom Exploration Footer */}
-      <div className="mt-14 pt-8 border-t border-white/[0.08] flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
+      <div className="mt-6 pt-5 border-t border-white/[0.08] flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6">
         <div className="font-mono text-[11px] tracking-widest uppercase max-w-md text-zinc-400 leading-relaxed">
           Crafting visual signatures & scalable architectures with human-centered empathy at the core of every line of code.
         </div>

@@ -29,7 +29,7 @@ export const About: React.FC = () => {
 
       {/* 220vh Scroll-Track for Word-by-Word Scroll Reveal */}
       <div ref={containerRef} className="h-[220vh] relative w-full z-10">
-        <div className="sticky top-0 h-screen flex flex-col justify-center pt-24 sm:pt-28 md:pt-32 pb-10 px-6 sm:px-10 lg:px-16 max-w-7xl mx-auto">
+        <div className="sticky top-0 h-screen flex flex-col justify-center py-10 sm:py-12 md:py-14 px-6 sm:px-10 lg:px-16 max-w-7xl mx-auto">
           
           {/* Top subtle progress bar */}
           <motion.div

@@ -45,14 +45,14 @@ export default function App() {
       {/* Global Ambient Cody Floral Infinity Logo Background (Entire Website) */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden flex items-center justify-center select-none">
         <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 180, repeat: Infinity, ease: 'linear' }}
-          className="w-[850px] sm:w-[1100px] lg:w-[1300px] h-[550px] sm:h-[700px] lg:h-[800px] flex items-center justify-center opacity-70"
+          animate={{ scale: [1, 1.04, 1], y: [-8, 8, -8] }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+          className="w-[94vw] max-w-[1400px] sm:max-w-[1650px] lg:max-w-[1900px] flex items-center justify-center pointer-events-none"
         >
           <img
             src="/cody-infinity.png"
             alt="Cody Infinity Watermark"
-            className="w-full h-full object-contain dark:invert-0 invert opacity-[0.055] select-none pointer-events-none"
+            className="w-full h-auto object-contain dark:invert-0 invert opacity-[0.075] select-none pointer-events-none"
           />
         </motion.div>
       </div>

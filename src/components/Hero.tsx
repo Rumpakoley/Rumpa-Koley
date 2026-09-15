@@ -82,10 +82,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenResumeModal }) => {
             <span>Architect & Engineer</span>
           </div>
 
-          <h1 className="font-display font-extrabold tracking-tighter uppercase leading-[0.88] text-[13vw] sm:text-[10vw] lg:text-[7.5vw] text-zinc-100">
+          <h1 className="font-display font-extrabold tracking-tighter uppercase leading-[0.88] text-[11.5vw] sm:text-[10vw] lg:text-[7.5vw] text-zinc-100">
             Full Stack
             <br />
-            <span className="stroke-text-lg tracking-tight hover:text-zinc-100 transition-colors duration-500">
+            <span className="inline-block text-[9vw] min-[390px]:text-[9.6vw] sm:text-[10vw] lg:text-[7.5vw] stroke-text-lg tracking-tight hover:text-zinc-100 transition-colors duration-500">
               Developer
             </span>
           </h1>

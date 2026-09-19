@@ -336,7 +336,7 @@ export const EDUCATION: EducationItem[] = [
   {
     id: 'edu-1',
     degree: 'Bachelor of Technology (B.Tech) in Computer Science & Engineering',
-    institution: 'Techno Main Salt Lake / Maulana Abul Kalam Azad University of Technology',
+    institution: 'Supreme Knowledge Foundation Group of Institutions',
     location: 'Kolkata, West Bengal, India',
     period: '2020 — 2024',
     grade: 'First Class with Distinction (CGPA: 8.8 / 10)',

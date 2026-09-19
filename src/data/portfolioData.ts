@@ -28,7 +28,7 @@ export const PROJECTS: Project[] = [
     technologies: ['React 19', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Node.js', 'Express', 'Vite'],
     thumbnailUrl: '/projects/morphiq.jpg',
     liveDemoUrl: 'https://www.themorphiq.com/',
-    sourceCodeUrl: 'https://github.com/rumpakoley/morphiq-studio',
+    sourceCodeUrl: 'https://github.com/Rumpakoley/Rumpa-Koley',
     featured: true,
     caseStudy: {
       problem:
